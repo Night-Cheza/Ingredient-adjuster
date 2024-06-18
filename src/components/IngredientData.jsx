@@ -1,9 +1,8 @@
-// @ts-nocheck
 import React, { useRef } from "react";
 import IngredientInput from "./IngredientInput.jsx";
 import Button from "./Button.jsx";
 
-function IngredientData ({ onAdd, onDone, onAdjust, headerText, btnText }) {
+function IngredientData ({ onAdd, onDone, headerText}) {
   const ingredientData = useRef();
   const amount = useRef();
   const measurement = useRef("Please select");
@@ -38,26 +37,6 @@ function IngredientData ({ onAdd, onDone, onAdjust, headerText, btnText }) {
     measurement.current.value = "Please select";
   }
 
-  function adjustHandler () {
-    const ingredientInput = ingredientData.current.value;
-    const amountInput = amount.current.value;
-    const measurementInput = measurement.current.value;
-
-    if (
-      ingredientInput.trim() === "" ||
-      amountInput.trim() === "" ||
-      measurementInput.trim() === "Please select"
-    ) {
-      return;
-      //HANDLE ERROR MESSAGE
-    }
-    onAdjust({
-      ingredient: ingredientInput.trim(),
-      amount: amountInput.trim(),
-      measurement: measurementInput.trim(),
-    });
-  }
-
   return (
     <section name="formData">
       <h3>{headerText}</h3>
@@ -74,15 +53,8 @@ function IngredientData ({ onAdd, onDone, onAdjust, headerText, btnText }) {
         select={undefined}
       />
       <IngredientInput ref={measurement} label="Measurement" select />
-
-      {btnText === "Adjust Recipe" ? (
-        <Button onClick={adjustHandler} text={btnText} />
-      ) : (
-        <>
-          <Button onClick={submitHandler} text={btnText} />
-          <Button onClick={onDone} text="Done" />
-        </>
-      )}
+			<Button onClick={submitHandler} text='Add Ingredient' />
+			<Button onClick={onDone} text="Done" />
     </section>
   );
 }
