@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import IngredientInput from "./IngredientInput.jsx";
 import Button from "./Button.jsx";
 
-function IngredientData ({ onAdd, onDone, headerText}) {
+function IngredientData ({onAdd, onDone, headerText}) {
   const ingredientData = useRef();
   const amount = useRef();
   const measurement = useRef("Please select");
