@@ -41,7 +41,11 @@ function App() {
 		} );
 
 		setIsDone( true );
-  }
+	}
+
+	function editHandler(ingredient) {
+
+	}
 
   return (
     <>
@@ -50,13 +54,19 @@ function App() {
       </header>
 			<main>
 				{!isDone ?
-					<><IngredientData
-						headerText={headerText}
-						onAdd={addIngredientHandler}
-						onDone={doneHandler}
-					/>
-						<IngredientList ingredientData={ingredientEntry.recipe} /></> :
-					<IngredientList ingredientData={ingredientEntry.recipe} />
+					<>
+						<IngredientData
+							headerText={headerText}
+							onAdd={addIngredientHandler}
+							onDone={doneHandler}
+						/>
+						<IngredientList ingredientData={ingredientEntry.recipe} />
+					</> :
+					<>
+						<h3>{headerText}</h3>
+						<IngredientList ingredientData={ingredientEntry.recipe} onEdit={editHandler}/>
+					</>
+
 				}
 
         {/*displays updated ingredient */}
