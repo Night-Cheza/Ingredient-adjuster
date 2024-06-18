@@ -44,13 +44,11 @@ function IngredientData ({onAdd, onDone, headerText}) {
         type="text"
         ref={ingredientData}
         label="Ingredient"
-        select={undefined}
       />
       <IngredientInput
         type="text"
         ref={amount}
         label="Amount"
-        select={undefined}
       />
       <IngredientInput ref={measurement} label="Measurement" select />
 			<Button onClick={submitHandler} text='Add Ingredient' />
