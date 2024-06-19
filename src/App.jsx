@@ -6,7 +6,7 @@ import IngredientList from "./components/IngredientList.jsx";
 
 function App() {
   const [ingredientEntry, setIngredientEntry] = useState({
-    recipe: [],
+		recipe: [],
   });
   const [headerText, setHeaderText] = useState(
     "Please enter all ingredients called for a recipe:"
@@ -43,8 +43,14 @@ function App() {
 		setIsDone( true );
 	}
 
-	function editHandler(ingredient) {
-
+	function editHandler ( ingredient ) {
+		console.log(ingredient)
+		setIngredientEntry( ( prevState ) => {
+			return {
+				...prevState,
+				selectedIngredient: ingredient
+			};
+		});
 	}
 
   return (
@@ -60,11 +66,11 @@ function App() {
 							onAdd={addIngredientHandler}
 							onDone={doneHandler}
 						/>
-						<IngredientList ingredientData={ingredientEntry.recipe} />
+						<IngredientList ingredientData={ingredientEntry.recipe} done={isDone}/>
 					</> :
 					<>
 						<h3>{headerText}</h3>
-						<IngredientList ingredientData={ingredientEntry.recipe} onEdit={editHandler}/>
+						<IngredientList ingredientData={ingredientEntry.recipe} onEdit={() => editHandler(ingredientEntry.recipe)} done={isDone}/>
 					</>
 
 				}
