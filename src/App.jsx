@@ -12,6 +12,7 @@ function App() {
     "Please enter all ingredients called for a recipe:"
   );
 	const [ isDone, setIsDone ] = useState( false );
+	const [ isEdited, setIsEdited ] = useState( false );
 
   function addIngredientHandler (ingredientData) {
     ingredientEntry.recipe.forEach((entry) => {
@@ -33,7 +34,7 @@ function App() {
   }
 
   function doneHandler() {
-    setHeaderText("Edit the ingredient to adjust the recipe to:");
+    setHeaderText("Select the ingredient to adjust the recipe to:");
     setIngredientEntry((prevState) => {
       return {
         ...prevState,
@@ -44,13 +45,17 @@ function App() {
 	}
 
 	function editHandler ( ingredient ) {
-		console.log(ingredient)
-		setIngredientEntry( ( prevState ) => {
+		setIngredientEntry((prevState) => {
+			const newData = {
+				...ingredient,
+			};
 			return {
 				...prevState,
-				selectedIngredient: ingredient
+				recipe: [...prevState.recipe, newData],
 			};
-		});
+		} );
+		setHeaderText('Here is your recalculated recipe:')
+		setIsEdited( true );
 	}
 
   return (
@@ -66,16 +71,18 @@ function App() {
 							onAdd={addIngredientHandler}
 							onDone={doneHandler}
 						/>
-						<IngredientList ingredientData={ingredientEntry.recipe} done={isDone}/>
+						<IngredientList ingredientData={ingredientEntry.recipe} done={isDone} />
 					</> :
 					<>
 						<h3>{headerText}</h3>
-						<IngredientList ingredientData={ingredientEntry.recipe} onEdit={() => editHandler(ingredientEntry.recipe)} done={isDone}/>
+						<IngredientList ingredientData={ingredientEntry.recipe} onEdit={editHandler} done={isDone} />
 					</>
-
 				}
-
-        {/*displays updated ingredient */}
+				{isEdited ?
+					<>
+						<IngredientList ingredientData={ingredientEntry.recipe} edited={isEdited} />
+					</> : undefined
+				}
       </main>
     </>
   );
