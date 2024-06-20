@@ -1,32 +1,36 @@
-import React, {useState} from "react";
-import IngredientInput from "./IngredientInput";
+import React, {useState, useRef} from "react";
+import Button from "./Button";
 
-function IngredientList ( {ingredientData, onEdit, done} ) {
-	let editContent;
+function IngredientList ( {ingredientData, onEdit, done, edited} ) {
+	const newAmount = useRef();
 	const [ toEdit, setToEdit ] = useState( false );
+	const [ ingredientToEdit, setIngredientToEdit ] = useState();
 
 	function editHandler ( ingredientName ) {
-		let amountToEdit;
-		ingredientData.forEach((ingredient) => {
-			if( ingredient.ingredient === ingredientName )
-			{
-				amountToEdit = ingredient.amount;
-			}
-		});
-		// const selectedIngredient = ingredientData.find( ( ingredient ) => ingredient.ingredient === ingredientName );
-		// editContent = (
-		// 	<>
-		// 		<IngredientInput
-		// 			type="text"
-		// 			ref={ingredientName} />
-		// 		<IngredientInput
-		// 			type="text"
-		// 			ref={ingredientName} />
-		// 	</>
-		// )
-		// setToEdit( true );
-		onEdit( ingredientName );
-		console.log(amountToEdit)
+		const ingredientIndex = ingredientData.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
+		setToEdit( true );
+		const editIngredient = ingredientData[ ingredientIndex ];
+		setIngredientToEdit( editIngredient );
+		ingredientData.splice( ingredientIndex, 1 );
+		// console.log(editIngredient)
+	}
+
+	// console.log( ingredientToEdit );
+	function doneHandler () {
+		const amountInput = newAmount.current.value.trim();
+		if( isNaN( amountInput ) || amountInput < 0 )
+		{
+
+		} else if( amountInput.trim() === "" )
+		{
+			return;
+		}
+		// console.log( amountInput );
+		onEdit( {
+			ingredient: ingredientToEdit.ingredient,
+			amount: amountInput,
+			measurement: ingredientToEdit.measurement,
+		} );
 	}
 
   return (
@@ -42,16 +46,19 @@ function IngredientList ( {ingredientData, onEdit, done} ) {
 						</ul>
 					))}
 				</li> :
-				<li>
-					{ingredientData.map((ingredient) => (
-						<ul key={ingredient.ingredient}>
-							<span>{ingredient.ingredient}</span>
-							<span>{ingredient.amount}</span>
-							<span>{ingredient.measurement}</span>
-							<span><i className="bi bi-pencil-square"></i></span>
-						</ul>
-					))}
-				</li>}
+				<>
+					{edited ?
+						undefined :
+						<>
+							<h4>Please, enter new amount:</h4>
+							<span>{ingredientToEdit.ingredient}</span>
+							<input placeholder={ingredientToEdit.amount} ref={newAmount}/>
+							<span>{ingredientToEdit.measurement}</span>
+							<span><Button text="Done" onClick={doneHandler}/></span>
+						</>
+					}
+				</>
+			}
 
     </section>
   );

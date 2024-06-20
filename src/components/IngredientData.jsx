@@ -21,9 +21,9 @@ function IngredientData ({onAdd, onDone, headerText}) {
       //HANDLE ERROR MESSAGE FOR EMPTY INPUT
       return;
 
-    } else if(isNaN(amountInput))
+    } else if(isNaN(amountInput) || amountInput < 0)
     {
-      throw Error('Amount is not a number. Please provide correct amount')
+      throw Error('Please provide correct amount')
     }
 
     onAdd({
