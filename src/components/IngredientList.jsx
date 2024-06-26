@@ -5,6 +5,7 @@ function IngredientList ( {ingredientData, onEdit, done, edited} ) {
 	const newAmount = useRef();
 	const [ toEdit, setToEdit ] = useState( false );
 	const [ ingredientToEdit, setIngredientToEdit ] = useState();
+	const [ isDisplayed, setIsDisplayed ] = useState( true );
 
 	function editHandler ( ingredientName ) {
 		const ingredientIndex = ingredientData.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
@@ -31,6 +32,7 @@ function IngredientList ( {ingredientData, onEdit, done, edited} ) {
 			amount: amountInput,
 			measurement: ingredientToEdit.measurement,
 		} );
+		setIsDisplayed( false );
 	}
 
   return (
@@ -50,11 +52,16 @@ function IngredientList ( {ingredientData, onEdit, done, edited} ) {
 					{edited ?
 						undefined :
 						<>
-							<h4>Please, enter new amount:</h4>
-							<span>{ingredientToEdit.ingredient}</span>
-							<input placeholder={ingredientToEdit.amount} ref={newAmount}/>
-							<span>{ingredientToEdit.measurement}</span>
-							<span><Button text="Done" onClick={doneHandler}/></span>
+							{isDisplayed ?
+								<>
+									<label>Please, enter new amount:</label><br/>
+									<span>{ingredientToEdit.ingredient}</span>
+									<input placeholder={ingredientToEdit.amount} ref={newAmount}/>
+									<span>{ingredientToEdit.measurement}</span>
+									<span><Button text="Done" onClick={doneHandler}/></span>
+								</> :
+								null
+							}
 						</>
 					}
 				</>

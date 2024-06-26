@@ -5,43 +5,43 @@ import IngredientData from "./components/IngredientData.jsx";
 import IngredientList from "./components/IngredientList.jsx";
 
 function App() {
-  const [ingredientEntry, setIngredientEntry] = useState({
+	const [ingredientEntry, setIngredientEntry] = useState({
 		recipe: [],
-  });
-  const [headerText, setHeaderText] = useState(
-    "Please enter all ingredients called for a recipe:"
-  );
+	});
+	const [headerText, setHeaderText] = useState(
+		"Enter all ingredients called for a recipe:"
+	);
 	const [ isDone, setIsDone ] = useState( false );
 	const [ isEdited, setIsEdited ] = useState( false );
 
-  function addIngredientHandler (ingredientData) {
-    ingredientEntry.recipe.forEach((entry) => {
-      if(entry.ingredient === ingredientData.ingredient)
-      {
-        console.log('You already have this ingredient');
-        throw Error('You already have this ingredient');
-      }
-    });
-    setIngredientEntry((prevState) => {
-      const newData = {
-        ...ingredientData,
-      };
-      return {
-        ...prevState,
-        recipe: [...prevState.recipe, newData],
-      };
-    });
-  }
+	function addIngredientHandler (ingredientData) {
+		ingredientEntry.recipe.forEach((entry) => {
+			if(entry.ingredient === ingredientData.ingredient)
+			{
+				console.log('You already have this ingredient');
+				throw Error('You already have this ingredient');
+			}
+		});
+		setIngredientEntry((prevState) => {
+			const newData = {
+				...ingredientData,
+			};
+			return {
+				...prevState,
+				recipe: [...prevState.recipe, newData],
+			};
+		});
+	}
 
   function doneHandler() {
-    setHeaderText("Select the ingredient to adjust the recipe to:");
-    setIngredientEntry((prevState) => {
-      return {
-        ...prevState,
-      };
+		setIngredientEntry((prevState) => {
+			return {
+				...prevState,
+			};
 		} );
 
 		setIsDone( true );
+		setHeaderText("Edit the ingredient to adjust the recipe to:");
 	}
 
 	function editHandler ( ingredient ) {
@@ -54,15 +54,16 @@ function App() {
 				recipe: [...prevState.recipe, newData],
 			};
 		} );
-		setHeaderText('Here is your recalculated recipe:')
+
 		setIsEdited( true );
+		setHeaderText( 'Here is your recalculated recipe:' );
 	}
 
   return (
-    <>
-      <header>
-        <h1>Re-calculate any recipe ingredients</h1>
-      </header>
+		<>
+			<header>
+				<h1>Re-calculate recipe ingredients</h1>
+			</header>
 			<main>
 				{!isDone ?
 					<>
