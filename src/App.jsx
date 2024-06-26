@@ -3,6 +3,7 @@ import "./App.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import IngredientData from "./components/IngredientData.jsx";
 import IngredientList from "./components/IngredientList.jsx";
+import {recalculateRecipe} from './util/recipeCalculator.js'
 
 function App() {
 	const [ingredientEntry, setIngredientEntry] = useState({
@@ -14,6 +15,7 @@ function App() {
 	const [ isDone, setIsDone ] = useState( false );
 	const [ isEdited, setIsEdited ] = useState( false );
 
+	//to add ingredients to list and render it
 	function addIngredientHandler (ingredientData) {
 		ingredientEntry.recipe.forEach((entry) => {
 			if(entry.ingredient === ingredientData.ingredient)
@@ -33,6 +35,7 @@ function App() {
 		});
 	}
 
+	//when done adding ingredients to the list
   function doneHandler() {
 		setIngredientEntry((prevState) => {
 			return {
@@ -44,17 +47,25 @@ function App() {
 		setHeaderText("Edit the ingredient to adjust the recipe to:");
 	}
 
+	//when edit one ingredient
+	//re-calculating other ingredients in the list
 	function editHandler ( ingredient ) {
-		setIngredientEntry((prevState) => {
-			const newData = {
-				...ingredient,
-			};
-			return {
-				...prevState,
-				recipe: [...prevState.recipe, newData],
-			};
-		} );
+		const newRecipe = ingredientEntry;
+		const ingredientIndex = newRecipe.recipe.findIndex( ( entry ) => entry.ingredient === ingredient.ingredient );
+		ingredientEntry.recipe.forEach( entry => {
+			if( entry.ingredient !== ingredient.ingredient )
+			{
+				entry.amount = recalculateRecipe( newRecipe.recipe[ ingredientIndex ].amount, ingredient.amount, entry.amount );
+			}
+		} )
+		newRecipe.recipe[ingredientIndex] = ingredient
+		console.log( newRecipe.recipe );
 
+		setIngredientEntry( () => {
+			return {
+				recipe: [...newRecipe.recipe]
+			}
+		});
 		setIsEdited( true );
 		setHeaderText( 'Here is your recalculated recipe:' );
 	}

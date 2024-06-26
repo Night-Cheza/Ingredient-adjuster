@@ -7,16 +7,15 @@ function IngredientList ( {ingredientData, onEdit, done, edited} ) {
 	const [ ingredientToEdit, setIngredientToEdit ] = useState();
 	const [ isDisplayed, setIsDisplayed ] = useState( true );
 
+	//to get ingredient data that user is editing
 	function editHandler ( ingredientName ) {
 		const ingredientIndex = ingredientData.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
 		setToEdit( true );
 		const editIngredient = ingredientData[ ingredientIndex ];
 		setIngredientToEdit( editIngredient );
-		ingredientData.splice( ingredientIndex, 1 );
-		// console.log(editIngredient)
 	}
 
-	// console.log( ingredientToEdit );
+	//done button after submitting updated ingredient data
 	function doneHandler () {
 		const amountInput = newAmount.current.value.trim();
 		if( isNaN( amountInput ) || amountInput < 0 )
@@ -26,7 +25,7 @@ function IngredientList ( {ingredientData, onEdit, done, edited} ) {
 		{
 			return;
 		}
-		// console.log( amountInput );
+
 		onEdit( {
 			ingredient: ingredientToEdit.ingredient,
 			amount: amountInput,
@@ -39,8 +38,8 @@ function IngredientList ( {ingredientData, onEdit, done, edited} ) {
 		<section>
 			{!toEdit ?
 				<li>
-					{ingredientData.map((ingredient) => (
-						<ul key={ingredient.ingredient}>
+					{ingredientData.map((ingredient, i) => (
+						<ul key={i}>
 							<span>{ingredient.ingredient}</span>
 							<span>{ingredient.amount}</span>
 							<span>{ingredient.measurement}</span>

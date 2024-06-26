@@ -7,6 +7,7 @@ function IngredientData ({onAdd, onDone, headerText}) {
   const amount = useRef();
   const measurement = useRef("Please select");
 
+	//getting user's initial input
   function submitHandler () {
     const ingredientInput = ingredientData.current.value.trim().toLowerCase();
     const amountInput = amount.current.value.trim();
