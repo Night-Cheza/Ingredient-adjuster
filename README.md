@@ -7,3 +7,10 @@ The app can take an input from a user and display it. Also it recalculates amoun
 	No styling
 
 June 18: rework code to add edit button on 'done' button instead of having input fields to enter an ingredient to adjust recipe to
+June 26: initial functionality for the app is done
+
+Next: styling and refining recalculation of the ingredients
+
+In the future:
+	- taking measurement in account for recalculations
+	- suggestion dowgrade or upgrade of the measurement when recalculating amount of the ingredient where necessary
