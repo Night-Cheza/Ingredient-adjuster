@@ -18,12 +18,9 @@ function IngredientList ( {ingredientData, onEdit, done, edited} ) {
 	//done button after submitting updated ingredient data
 	function doneHandler () {
 		const amountInput = newAmount.current.value.trim();
-		if( isNaN( amountInput ) || amountInput < 0 )
+		if( isNaN( amountInput ) || amountInput < 0 || amountInput.trim() === "" )
 		{
-
-		} else if( amountInput.trim() === "" )
-		{
-			return;
+			throw Error( 'Please provide correct amount' );
 		}
 
 		onEdit( {

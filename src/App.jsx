@@ -59,7 +59,6 @@ function App() {
 			}
 		} )
 		newRecipe.recipe[ingredientIndex] = ingredient
-		console.log( newRecipe.recipe );
 
 		setIngredientEntry( () => {
 			return {
