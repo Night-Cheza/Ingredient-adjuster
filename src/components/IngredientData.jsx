@@ -39,21 +39,27 @@ function IngredientData ({onAdd, onDone, headerText}) {
   }
 
   return (
-    <section name="formData">
-      <h3>{headerText}</h3>
-      <IngredientInput
-        type="text"
-        ref={ingredientData}
-        label="Ingredient"
-      />
-      <IngredientInput
-        type="text"
-        ref={amount}
-        label="Amount"
-      />
-      <IngredientInput ref={measurement} label="Measurement" select />
-			<Button onClick={submitHandler} text='Add Ingredient' />
-			<Button onClick={onDone} text="Done" />
+		<section className="ingredientInput">
+			<h3>{headerText}</h3>
+			<table>
+				<tbody>
+					<IngredientInput
+						type="text"
+						ref={ingredientData}
+						label="Ingredient"
+					/>
+					<IngredientInput
+						type="text"
+						ref={amount}
+						label="Amount"
+					/>
+					<IngredientInput ref={measurement} label="Measurement" select />
+				</tbody>
+			</table>
+			<div className="btns">
+				<Button onClick={submitHandler} text='Add Ingredient' />
+				<Button onClick={onDone} text="Done" />
+			</div>
     </section>
   );
 }

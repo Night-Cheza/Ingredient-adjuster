@@ -19,20 +19,27 @@ const IngredientInput = forwardRef(function IngredientInput(
   ref
 ) {
   return (
-    <section>
-      <label>{label}</label>
-      {select ? (
-        <select ref={ref} {...props}>
-          {OPTIONS.map((value, valueIndex) => (
-            <option key={valueIndex} value={value}>
-              {value}
-            </option>
-          ))}
-        </select>
-      ) : (
-        <input ref={ref} {...props} />
-      )}
-    </section>
+    <>
+			<tr>
+				<td>
+					<label>{label}</label>
+				</td>
+				<td>
+					{select ? (
+						<select ref={ref} {...props}>
+							{OPTIONS.map((value, valueIndex) => (
+								<option key={valueIndex} value={value}>
+									{value}
+								</option>
+							))}
+						</select>
+					) : (
+						<input ref={ref} {...props} />
+					)}
+				</td>
+			</tr>
+
+    </>
   );
 });
 
