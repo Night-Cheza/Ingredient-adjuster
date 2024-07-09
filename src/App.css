@@ -41,12 +41,9 @@ span {
 	width: 50%;
 	margin-left: 25vw;
 	margin-bottom: 5vh;
-	/* background-color: aquamarine; */
 }
 
 .btns {
-	/* display: flex; */
-	/* gap: 1vw; */
 	float: right;
 	margin-top: 2vh;
 }

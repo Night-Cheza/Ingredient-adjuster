@@ -54,12 +54,15 @@ function IngredientData ({onAdd, onDone, headerText}) {
 						label="Amount"
 					/>
 					<IngredientInput ref={measurement} label="Measurement" select />
+					<tr>
+						<td></td>
+						<td className="btns">
+							<Button onClick={submitHandler} text='Add Ingredient' />
+							<Button onClick={onDone} text="Done" />
+						</td>
+					</tr>
 				</tbody>
 			</table>
-			<div className="btns">
-				<Button onClick={submitHandler} text='Add Ingredient' />
-				<Button onClick={onDone} text="Done" />
-			</div>
     </section>
   );
 }
