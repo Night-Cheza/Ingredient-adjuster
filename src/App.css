@@ -3,7 +3,7 @@ li {
 }
 
 button {
-	margin-top: 3vh;
+	margin-left: 1vh;
 }
 
 label {
@@ -20,25 +20,42 @@ input {
 }
 
 select {
-	width: 100%;
+	width: 15.7vw;
 	height: 3.72vh;
 	margin-top: 1vh;
 }
 
 table {
-	margin-left: 23.5%;
+	margin-left: 11.5vw;
+	border-collapse: separate;
+	border-spacing: 1vw;
+}
+
+span {
+	margin-right: 1vw;
+	width: 15vw;
 }
 
 .ingredientInput {
 	align-items: center;
 	width: 50%;
-	margin-left: 25%;
+	margin-left: 25vw;
+	margin-bottom: 5vh;
 	/* background-color: aquamarine; */
 }
 
 .btns {
-	display: flex;
-	gap: 2.75vw;
-	margin-right:12.7vw;
+	/* display: flex; */
+	/* gap: 1vw; */
 	float: right;
+	margin-top: 2vh;
+}
+
+.list {
+	margin-left: 25vw;
+	width: 50%;
+}
+
+.list td {
+	width: auto;
 }
