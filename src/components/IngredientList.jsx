@@ -31,40 +31,41 @@ function IngredientList ( {ingredientData, onEdit, done, edited} ) {
 		setIsDisplayed( false );
 	}
 
-  return (
-		<section>
+	return (
+		<section className="list">
 			{!toEdit ?
-				<li>
+				<table>
 					{ingredientData.map((ingredient, i) => (
-						<ul key={i}>
-							<span>{ingredient.ingredient}</span>
-							<span>{ingredient.amount}</span>
-							<span>{ingredient.measurement}</span>
-							{done ? <span><i className="bi bi-pencil-square" onClick={() => editHandler(ingredient.ingredient)}></i></span> : undefined}
-						</ul>
+						<tr key={i}>
+							<td>{ingredient.ingredient}</td>
+							<td>{ingredient.amount}</td>
+							<td>{ingredient.measurement}</td>
+							{done ? <td><i className="bi bi-pencil-square" onClick={() => editHandler(ingredient.ingredient)}></i></td> : undefined}
+						</tr>
 					))}
-				</li> :
+				</table>
+				:
 				<>
-					{edited ?
-						undefined :
+					{!edited && isDisplayed ?
 						<>
-							{isDisplayed ?
-								<>
-									<label>Please, enter new amount:</label><br/>
-									<span>{ingredientToEdit.ingredient}</span>
-									<input placeholder={ingredientToEdit.amount} ref={newAmount}/>
-									<span>{ingredientToEdit.measurement}</span>
-									<span><Button text="Done" onClick={doneHandler}/></span>
-								</> :
-								null
-							}
-						</>
+							<table>
+								<tr>
+									<th colSpan={2}>Please, enter new amount:</th>
+								</tr>
+								<tr>
+									<td>{ingredientToEdit.ingredient}</td>
+									<td><input placeholder={ingredientToEdit.amount} ref={newAmount}/></td>
+									<td>{ingredientToEdit.measurement}</td>
+									<td><Button text="Done" onClick={doneHandler}/></td>
+								</tr>
+							</table>
+						</> :
+						undefined
 					}
 				</>
 			}
-
-    </section>
-  );
+		</section>
+	);
 }
 
 export default IngredientList;
