@@ -2,43 +2,43 @@ import React, { useRef } from "react";
 import IngredientInput from "./IngredientInput.jsx";
 import Button from "./Button.jsx";
 
-function IngredientData ({onAdd, onDone, headerText}) {
-  const ingredientData = useRef();
-  const amount = useRef();
-  const measurement = useRef("Please select");
+function IngredientData ({onAdd, headerText}) {
+	const ingredientData = useRef();
+	const amount = useRef();
+	const measurement = useRef( "Please select" );
+
 
 	//getting user's initial input
-  function submitHandler () {
-    const ingredientInput = ingredientData.current.value.trim().toLowerCase();
-    const amountInput = amount.current.value.trim();
-    const measurementInput = measurement.current.value;
+	function submitHandler () {
+		const ingredientInput = ingredientData.current.value.trim().toLowerCase();
+		const amountInput = amount.current.value.trim();
+		const measurementInput = measurement.current.value;
 
-    if (
-      ingredientInput.trim() === "" ||
-      amountInput.trim() === "" ||
-      measurementInput.trim() === "Please select"
-    )
-    {
-      //HANDLE ERROR MESSAGE FOR EMPTY INPUT
-      return;
+		if (
+			ingredientInput.trim() === "" ||
+			amountInput.trim() === "" ||
+			measurementInput.trim() === "Please select"
+		)
+		{
+			//HANDLE ERROR MESSAGE FOR EMPTY INPUT
+			return;
+		} else if(isNaN(amountInput) || amountInput < 0)
+		{
+			throw Error('Please provide correct amount')
+		}
 
-    } else if(isNaN(amountInput) || amountInput < 0)
-    {
-      throw Error('Please provide correct amount')
-    }
+		onAdd({
+			ingredient: ingredientInput,
+			amount: amountInput,
+			measurement: measurementInput,
+		});
 
-    onAdd({
-      ingredient: ingredientInput,
-      amount: amountInput,
-      measurement: measurementInput,
-    });
+		ingredientData.current.value = null;
+		amount.current.value = null;
+		measurement.current.value = "Please select";
+	}
 
-    ingredientData.current.value = null;
-    amount.current.value = null;
-    measurement.current.value = "Please select";
-  }
-
-  return (
+	return (
 		<section className="ingredientInput">
 			<h3>{headerText}</h3>
 			<table>
@@ -55,16 +55,14 @@ function IngredientData ({onAdd, onDone, headerText}) {
 					/>
 					<IngredientInput ref={measurement} label="Measurement" select />
 					<tr>
-						<td></td>
-						<td className="btns">
+						<td colSpan='2' className="btns">
 							<Button onClick={submitHandler} text='Add Ingredient' />
-							<Button onClick={onDone} text="Done" />
 						</td>
 					</tr>
 				</tbody>
 			</table>
-    </section>
-  );
+		</section>
+	);
 }
 
 export default IngredientData;

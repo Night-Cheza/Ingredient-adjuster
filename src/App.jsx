@@ -3,6 +3,7 @@ import "./App.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import IngredientData from "./components/IngredientData.jsx";
 import IngredientList from "./components/IngredientList.jsx";
+import Button from "./components/Button.jsx";
 import {recalculateRecipe} from './util/recipeCalculator.js'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 	);
 	const [ isDone, setIsDone ] = useState( false );
 	const [ isEdited, setIsEdited ] = useState( false );
+	const [ isEmpty, setIsEmpty ] = useState( true );
 
 	//to add ingredients to list and render it
 	function addIngredientHandler (ingredientData) {
@@ -32,7 +34,11 @@ function App() {
 				...prevState,
 				recipe: [...prevState.recipe, newData],
 			};
-		});
+		} );
+		if( ingredientEntry.recipe.length > 0 )
+		{
+			setIsEmpty( false );
+		}
 	}
 
 	//when done adding ingredients to the list
@@ -66,10 +72,10 @@ function App() {
 			}
 		});
 		setIsEdited( true );
-		setHeaderText( 'Here is your recalculated recipe:' );
+		setHeaderText( 'Your re-calculated recipe is:' );
 	}
 
-  return (
+	return (
 		<>
 			<header>
 				<h1>Re-calculate recipe ingredients</h1>
@@ -77,12 +83,9 @@ function App() {
 			<main>
 				{!isDone ?
 					<>
-						<IngredientData
-							headerText={headerText}
-							onAdd={addIngredientHandler}
-							onDone={doneHandler}
-						/>
+						<IngredientData headerText={headerText} onAdd={addIngredientHandler} />
 						<IngredientList ingredientData={ingredientEntry.recipe} done={isDone} />
+						{isEmpty ? null : <div><Button onClick={doneHandler} text="Done" /></div>}
 					</> :
 					<>
 						<h3>{headerText}</h3>
@@ -94,8 +97,8 @@ function App() {
 						<IngredientList ingredientData={ingredientEntry.recipe} edited={isEdited} />
 					</> : undefined
 				}
-      </main>
-    </>
-  );
+			</main>
+		</>
+	);
 }
 export default App;
