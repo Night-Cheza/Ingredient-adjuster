@@ -2,10 +2,6 @@ li {
 	list-style-type: none;
 }
 
-button {
-	margin-left: 1vh;
-}
-
 label {
 	margin-right: 1vw;
 }
@@ -26,15 +22,12 @@ select {
 }
 
 table {
-	margin-left: 11.5vw;
+	margin-left: 10.5vw;
 	border-collapse: separate;
 	border-spacing: 1vw;
+	width: 75%
 }
 
-span {
-	margin-right: 1vw;
-	width: 15vw;
-}
 
 .ingredientInput {
 	align-items: center;
@@ -43,16 +36,23 @@ span {
 	margin-bottom: 5vh;
 }
 
-.btns {
-	float: right;
-	margin-top: 2vh;
-}
-
 .list {
 	margin-left: 25vw;
 	width: 50%;
 }
 
 .list td {
-	width: auto;
+	width:auto;
+}
+
+.bi-pencil-square {
+	cursor: pointer;
+}
+
+#newInput {
+	width: 15vw;
+}
+
+#editTable {
+	margin-left: 9vw;
 }

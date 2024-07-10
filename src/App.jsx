@@ -3,7 +3,6 @@ import "./App.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import IngredientData from "./components/IngredientData.jsx";
 import IngredientList from "./components/IngredientList.jsx";
-import Button from "./components/Button.jsx";
 import {recalculateRecipe} from './util/recipeCalculator.js'
 
 function App() {
@@ -35,21 +34,24 @@ function App() {
 				recipe: [...prevState.recipe, newData],
 			};
 		} );
-		if( ingredientEntry.recipe.length > 0 )
+		if( ingredientEntry.recipe.length > 0 && !isDone)
 		{
 			setIsEmpty( false );
 		}
 	}
 
 	//when done adding ingredients to the list
-  function doneHandler() {
+	function doneHandler () {
 		setIngredientEntry((prevState) => {
 			return {
 				...prevState,
 			};
 		} );
-
 		setIsDone( true );
+
+		if(ingredientEntry.recipe.length > 0 && isDone) {
+			setIsEmpty( true );
+		}
 		setHeaderText("Edit the ingredient to adjust the recipe to:");
 	}
 
@@ -84,9 +86,9 @@ function App() {
 				{!isDone ?
 					<>
 						<IngredientData headerText={headerText} onAdd={addIngredientHandler} />
-						<IngredientList ingredientData={ingredientEntry.recipe} done={isDone} />
-						{isEmpty ? null : <div><Button onClick={doneHandler} text="Done" /></div>}
-					</> :
+						<IngredientList ingredientData={ingredientEntry.recipe} doneAdding={doneHandler} done={isDone} empty={isEmpty}/>
+					</>
+				:
 					<>
 						<h3>{headerText}</h3>
 						<IngredientList ingredientData={ingredientEntry.recipe} onEdit={editHandler} done={isDone} />
