@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react";
 import Button from "./Button";
 
-function IngredientList ( {ingredientData, onEdit, done, edited} ) {
+function IngredientList ( {ingredientData, doneAdding, onEdit, done, edited, empty} ) {
 	const newAmount = useRef();
 	const [ toEdit, setToEdit ] = useState( false );
 	const [ ingredientToEdit, setIngredientToEdit ] = useState();
@@ -34,30 +34,45 @@ function IngredientList ( {ingredientData, onEdit, done, edited} ) {
 	return (
 		<section className="list">
 			{!toEdit ?
-				<table>
-					{ingredientData.map((ingredient, i) => (
-						<tr key={i}>
-							<td>{ingredient.ingredient}</td>
-							<td>{ingredient.amount}</td>
-							<td>{ingredient.measurement}</td>
-							{done ? <td><i className="bi bi-pencil-square" onClick={() => editHandler(ingredient.ingredient)}></i></td> : undefined}
-						</tr>
-					))}
-				</table>
+				<>
+					{done || edited ? undefined : <p>Here is your recipe list. Please press 'Done' when done adding ingredients.</p>}
+					<table>
+						<tbody>
+							<tr>
+								<td>Ingredient</td>
+								<td>Amount</td>
+								<td>Measurement</td>
+							</tr>
+							{ingredientData.map((ingredient, i) => (
+								<tr key={i}>
+									<td>{ingredient.ingredient}</td>
+									<td>{ingredient.amount}</td>
+									<td>{ingredient.measurement}</td>
+									{done ? <td><i className="bi bi-pencil-square" onClick={() => editHandler(ingredient.ingredient)}></i></td> : undefined}
+								</tr>
+							) )}
+							{empty || done || edited ? undefined : <tr><td colSpan='3'><Button onClick={doneAdding} text="Done" /></td></tr>}
+						</tbody>
+					</table>
+				</>
 				:
 				<>
 					{!edited && isDisplayed ?
 						<>
-							<table>
-								<tr>
-									<th colSpan={2}>Please, enter new amount:</th>
-								</tr>
-								<tr>
-									<td>{ingredientToEdit.ingredient}</td>
-									<td><input placeholder={ingredientToEdit.amount} ref={newAmount}/></td>
-									<td>{ingredientToEdit.measurement}</td>
-									<td><Button text="Done" onClick={doneHandler}/></td>
-								</tr>
+							<table id='editTable'>
+								<tbody>
+									<tr>
+										<th colSpan='3'>Please, enter new amount:</th>
+									</tr>
+									<tr>
+										<td>{ingredientToEdit.ingredient}</td>
+										<td id="newInput"><input placeholder={ingredientToEdit.amount} ref={newAmount}/></td>
+										<td>{ingredientToEdit.measurement}</td>
+									</tr>
+									<tr>
+										<td colSpan='3'><Button text="Done" onClick={doneHandler}/></td>
+									</tr>
+								</tbody>
 							</table>
 						</> :
 						undefined

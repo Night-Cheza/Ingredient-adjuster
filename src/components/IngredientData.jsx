@@ -55,7 +55,7 @@ function IngredientData ({onAdd, headerText}) {
 					/>
 					<IngredientInput ref={measurement} label="Measurement" select />
 					<tr>
-						<td colSpan='2' className="btns">
+						<td colSpan='2'>
 							<Button onClick={submitHandler} text='Add Ingredient' />
 						</td>
 					</tr>
