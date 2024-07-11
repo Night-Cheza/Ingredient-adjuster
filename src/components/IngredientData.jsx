@@ -39,8 +39,9 @@ function IngredientData ({onAdd, headerText}) {
 	}
 
 	return (
-		<section className="ingredientInput">
+		<>
 			<h3>{headerText}</h3>
+			<div className="ingredientInput">
 			<table>
 				<tbody>
 					<IngredientInput
@@ -61,7 +62,9 @@ function IngredientData ({onAdd, headerText}) {
 					</tr>
 				</tbody>
 			</table>
-		</section>
+		</div>
+		</>
+
 	);
 }
 

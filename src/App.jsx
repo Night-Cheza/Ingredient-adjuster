@@ -10,11 +10,13 @@ function App() {
 		recipe: [],
 	});
 	const [headerText, setHeaderText] = useState(
-		"Enter all ingredients called for a recipe:"
+		"Enter all ingredients called for a recipe"
 	);
 	const [ isDone, setIsDone ] = useState( false );
 	const [ isEdited, setIsEdited ] = useState( false );
 	const [ isEmpty, setIsEmpty ] = useState( true );
+	const [isActive, setIsActive] = useState( false );
+
 
 	//to add ingredients to list and render it
 	function addIngredientHandler (ingredientData) {
@@ -34,9 +36,13 @@ function App() {
 				recipe: [...prevState.recipe, newData],
 			};
 		} );
-		if( ingredientEntry.recipe.length > 0 && !isDone)
+		if( ingredientEntry.recipe.length > 0 || !isDone)
 		{
 			setIsEmpty( false );
+		}
+		if( ingredientEntry.recipe.length >= 1 )
+		{
+			setIsActive( true );
 		}
 	}
 
@@ -52,7 +58,7 @@ function App() {
 		if(ingredientEntry.recipe.length > 0 && isDone) {
 			setIsEmpty( true );
 		}
-		setHeaderText("Edit the ingredient to adjust the recipe to:");
+		setHeaderText("Edit the ingredient to adjust the recipe to");
 	}
 
 	//when edit one ingredient
@@ -86,7 +92,7 @@ function App() {
 				{!isDone ?
 					<>
 						<IngredientData headerText={headerText} onAdd={addIngredientHandler} />
-						<IngredientList ingredientData={ingredientEntry.recipe} doneAdding={doneHandler} done={isDone} empty={isEmpty}/>
+						<IngredientList ingredientData={ingredientEntry.recipe} doneAdding={doneHandler} done={isDone} empty={isEmpty} active={isActive}/>
 					</>
 				:
 					<>
