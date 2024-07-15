@@ -19,3 +19,8 @@ button:active {
 	background-color: rgb(240, 205, 155);
 	box-shadow: none;
 }
+
+button:disabled {
+	background-color: rgb(244, 233, 218);
+	box-shadow: none;
+}
