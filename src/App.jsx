@@ -3,7 +3,8 @@ import "./App.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import IngredientData from "./components/IngredientData.jsx";
 import IngredientList from "./components/IngredientList.jsx";
-import {recalculateRecipe} from './util/recipeCalculator.js'
+import {recalculateRecipe} from './util/recipeCalculator.js';
+import {ListContext} from './store/recipe-list-context.jsx';
 
 function App() {
 	const [ingredientEntry, setIngredientEntry] = useState({
@@ -83,8 +84,13 @@ function App() {
 		setHeaderText( 'Your re-calculated recipe is:' );
 	}
 
+	const cntxValue = {
+		recipe: ingredientEntry.recipe,
+		addIngredient: addIngredientHandler
+	}
+
 	return (
-		<>
+		<ListContext.Provider value={cntxValue}>
 			<header>
 				<h1>Re-calculate recipe ingredients</h1>
 			</header>
@@ -106,7 +112,7 @@ function App() {
 					</> : undefined
 				}
 			</main>
-		</>
+		</ListContext.Provider>
 	);
 }
 export default App;

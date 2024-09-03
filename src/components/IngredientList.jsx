@@ -1,7 +1,11 @@
 import React, {useState, useRef} from "react";
+import { useContext } from "react";
+import { ListContext } from "../store/recipe-list-context";
 import Button from "./Button";
 
-function IngredientList ( {ingredientData, doneAdding, onEdit, done, edited, empty, active} ) {
+function IngredientList ( {doneAdding, onEdit, done, edited, empty, active} ) {
+	const {recipe} = useContext( ListContext );
+
 	const newAmount = useRef();
 	const [ toEdit, setToEdit ] = useState( false );
 	const [ ingredientToEdit, setIngredientToEdit ] = useState();
@@ -9,9 +13,9 @@ function IngredientList ( {ingredientData, doneAdding, onEdit, done, edited, emp
 
 	//to get ingredient data that user is editing
 	function editHandler ( ingredientName ) {
-		const ingredientIndex = ingredientData.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
+		const ingredientIndex = recipe.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
 		setToEdit( true );
-		const editIngredient = ingredientData[ ingredientIndex ];
+		const editIngredient = recipe[ ingredientIndex ];
 		setIngredientToEdit( editIngredient );
 	}
 
@@ -46,7 +50,7 @@ function IngredientList ( {ingredientData, doneAdding, onEdit, done, edited, emp
 										<th>Measurement</th>
 									</tr>
 								}
-								{ingredientData.map((ingredient, i) => (
+								{recipe.map((ingredient, i) => (
 									<tr key={i}>
 										<td>{ingredient.ingredient}</td>
 										<td>{ingredient.amount}</td>

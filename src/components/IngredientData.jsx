@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, {useRef} from "react";
+import { useContext } from "react";
+import { ListContext } from "../store/recipe-list-context.jsx";
 import IngredientInput from "./IngredientInput.jsx";
 import Button from "./Button.jsx";
 
-function IngredientData ({onAdd, headerText}) {
+function IngredientData ( {headerText} ) {
+	const {addIngredient} = useContext( ListContext );
 	const ingredientData = useRef();
 	const amount = useRef();
 	const measurement = useRef( "Please select" );
@@ -27,7 +30,7 @@ function IngredientData ({onAdd, headerText}) {
 			throw Error('Please provide correct amount')
 		}
 
-		onAdd({
+		addIngredient({
 			ingredient: ingredientInput,
 			amount: amountInput,
 			measurement: measurementInput,
