@@ -4,7 +4,7 @@ import { ListContext } from "../store/recipe-list-context.jsx";
 import IngredientInput from "./IngredientInput.jsx";
 import Button from "./Button.jsx";
 
-function IngredientData ( {headerText} ) {
+function IngredientData () {
 	const {addIngredient} = useContext( ListContext );
 	const ingredientData = useRef();
 	const amount = useRef();
@@ -43,7 +43,6 @@ function IngredientData ( {headerText} ) {
 
 	return (
 		<>
-			<h3>{headerText}</h3>
 			<div className="ingredientInput">
 			<table>
 				<tbody>

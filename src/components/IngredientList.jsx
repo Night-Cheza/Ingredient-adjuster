@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { ListContext } from "../store/recipe-list-context";
 import Button from "./Button";
 
-function IngredientList ( {doneAdding, onEdit, done, edited, empty, active} ) {
-	const {recipe} = useContext( ListContext );
+function IngredientList ( {done, edited, empty, active} ) {
+	const {recipe, doneAdding, editIngredient} = useContext( ListContext );
 
 	const newAmount = useRef();
 	const [ toEdit, setToEdit ] = useState( false );
@@ -15,8 +15,8 @@ function IngredientList ( {doneAdding, onEdit, done, edited, empty, active} ) {
 	function editHandler ( ingredientName ) {
 		const ingredientIndex = recipe.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
 		setToEdit( true );
-		const editIngredient = recipe[ ingredientIndex ];
-		setIngredientToEdit( editIngredient );
+		const findIngredient = recipe[ ingredientIndex ];
+		setIngredientToEdit( findIngredient );
 	}
 
 	//done button after submitting updated ingredient data
@@ -27,7 +27,7 @@ function IngredientList ( {doneAdding, onEdit, done, edited, empty, active} ) {
 			throw Error( 'Please provide correct amount' );
 		}
 
-		onEdit( {
+		editIngredient( {
 			ingredient: ingredientToEdit.ingredient,
 			amount: amountInput,
 			measurement: ingredientToEdit.measurement,

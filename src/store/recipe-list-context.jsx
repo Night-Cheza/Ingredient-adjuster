@@ -2,7 +2,9 @@ import {createContext} from "react";
 
 export const ListContext = createContext({
 	recipe: [],
-	addIngredient: () => {},
+	addIngredient: () => { },
+	doneAdding: () => { },
+	editIngredient: () => { },
 });
 
-
+export default function ListContextProvider() {}

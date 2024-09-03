@@ -82,7 +82,9 @@ function App() {
 
 	const cntxValue = {
 		recipe: ingredientEntry.recipe,
-		addIngredient: addIngredientHandler
+		addIngredient: addIngredientHandler,
+		doneAdding: doneHandler,
+		editIngredient: editHandler,
 	}
 
 	return (
@@ -95,12 +97,12 @@ function App() {
 					<>
 						<Header done = {isDone} edited = {isEdited}/>
 						<IngredientData onAdd={addIngredientHandler} />
-						<IngredientList ingredientData={ingredientEntry.recipe} doneAdding={doneHandler} done={isDone} empty={isEmpty} active={isActive}/>
+						<IngredientList done={isDone} empty={isEmpty} active={isActive} />
 					</>
 				:
 					<>
 						<Header done = {isDone} edited = {isEdited}/>
-						<IngredientList ingredientData={ingredientEntry.recipe} onEdit={editHandler} done={isDone} />
+						<IngredientList done={isDone} />
 					</>
 				}
 				{isEdited ?
