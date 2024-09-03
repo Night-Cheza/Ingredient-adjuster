@@ -3,6 +3,7 @@ import "./App.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 import IngredientData from "./components/IngredientData.jsx";
 import IngredientList from "./components/IngredientList.jsx";
+import Header from './components/Header.jsx'
 import {recalculateRecipe} from './util/recipeCalculator.js';
 import {ListContext} from './store/recipe-list-context.jsx';
 
@@ -10,9 +11,6 @@ function App() {
 	const [ingredientEntry, setIngredientEntry] = useState({
 		recipe: [],
 	});
-	const [headerText, setHeaderText] = useState(
-		"Enter all ingredients called for a recipe"
-	);
 	const [ isDone, setIsDone ] = useState( false );
 	const [ isEdited, setIsEdited ] = useState( false );
 	const [ isEmpty, setIsEmpty ] = useState( true );
@@ -59,7 +57,6 @@ function App() {
 		if(ingredientEntry.recipe.length > 0 && isDone) {
 			setIsEmpty( true );
 		}
-		setHeaderText("Edit the ingredient to adjust the recipe to");
 	}
 
 	//when edit one ingredient
@@ -81,7 +78,6 @@ function App() {
 			}
 		});
 		setIsEdited( true );
-		setHeaderText( 'Your re-calculated recipe is:' );
 	}
 
 	const cntxValue = {
@@ -97,12 +93,13 @@ function App() {
 			<main>
 				{!isDone ?
 					<>
-						<IngredientData headerText={headerText} onAdd={addIngredientHandler} />
+						<Header done = {isDone} edited = {isEdited}/>
+						<IngredientData onAdd={addIngredientHandler} />
 						<IngredientList ingredientData={ingredientEntry.recipe} doneAdding={doneHandler} done={isDone} empty={isEmpty} active={isActive}/>
 					</>
 				:
 					<>
-						<h3>{headerText}</h3>
+						<Header done = {isDone} edited = {isEdited}/>
 						<IngredientList ingredientData={ingredientEntry.recipe} onEdit={editHandler} done={isDone} />
 					</>
 				}
