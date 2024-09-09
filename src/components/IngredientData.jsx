@@ -42,8 +42,7 @@ function IngredientData () {
 	}
 
 	return (
-		<>
-			<div className="ingredientInput">
+		<div className="ingredientInput">
 			<table>
 				<tbody>
 					<IngredientInput
@@ -65,8 +64,6 @@ function IngredientData () {
 				</tbody>
 			</table>
 		</div>
-		</>
-
 	);
 }
 
