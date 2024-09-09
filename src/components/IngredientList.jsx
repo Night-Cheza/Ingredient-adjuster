@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { ListContext } from "../store/recipe-list-context";
 import Button from "./Button";
 
-function IngredientList ( {done, edited, empty, active} ) {
-	const {recipe, doneAdding, editIngredient} = useContext( ListContext );
+function IngredientList () {
+	const listCntx = useContext( ListContext );
 
 	const newAmount = useRef();
 	const [ toEdit, setToEdit ] = useState( false );
@@ -13,9 +13,9 @@ function IngredientList ( {done, edited, empty, active} ) {
 
 	//to get ingredient data that user is editing
 	function editHandler ( ingredientName ) {
-		const ingredientIndex = recipe.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
+		const ingredientIndex = listCntx.recipe.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
 		setToEdit( true );
-		const findIngredient = recipe[ ingredientIndex ];
+		const findIngredient = listCntx.recipe[ ingredientIndex ];
 		setIngredientToEdit( findIngredient );
 	}
 
@@ -27,7 +27,7 @@ function IngredientList ( {done, edited, empty, active} ) {
 			throw Error( 'Please provide correct amount' );
 		}
 
-		editIngredient( {
+		listCntx.editIngredient( {
 			ingredient: ingredientToEdit.ingredient,
 			amount: amountInput,
 			measurement: ingredientToEdit.measurement,
@@ -37,34 +37,34 @@ function IngredientList ( {done, edited, empty, active} ) {
 
 	return (
 		<>
-			{empty || done || edited ? undefined : <p>Here is your recipe list. <br/> Please press 'Done' when done adding ingredients.</p>}
+			{listCntx.empty || listCntx.done || listCntx.edited ? undefined : <p>Here is your recipe list. <br/> Please press 'Done' when done adding ingredients.</p>}
 			<div className="list">
 				{!toEdit ?
 					<>
 						<table>
 							<tbody>
-								{empty || done || edited ? undefined :
+								{listCntx.empty || listCntx.done || listCntx.edited ? undefined :
 									<tr>
 										<th>Ingredient</th>
 										<th>Amount</th>
 										<th>Measurement</th>
 									</tr>
 								}
-								{recipe.map((ingredient, i) => (
+								{listCntx.recipe.map((ingredient, i) => (
 									<tr key={i}>
 										<td>{ingredient.ingredient}</td>
 										<td>{ingredient.amount}</td>
 										<td>{ingredient.measurement}</td>
-										{done ? <td><i className="bi bi-pencil-square" onClick={() => editHandler(ingredient.ingredient)}></i></td> : undefined}
+										{listCntx.edited ? undefined : <td><i className="bi bi-pencil-square" onClick={() => editHandler( ingredient.ingredient )}></i></td>}
 									</tr>
 								) )}
-								{empty || done || edited ? undefined : <tr><td colSpan='3'><Button onClick={doneAdding} text="Done" disabled={!active} /></td></tr>}
+								{listCntx.empty || listCntx.done || listCntx.edited ? undefined : <tr><td colSpan='3'><Button onClick={listCntx.doneAdding} text="Done" disabled={!listCntx.active} /></td></tr>}
 							</tbody>
 						</table>
 					</>
 					:
 					<>
-						{!edited && isDisplayed ?
+						{!listCntx.edited && isDisplayed ?
 							<>
 								<table>
 									<tbody>
