@@ -9,14 +9,15 @@ function IngredientList () {
 	const newAmount = useRef();
 	const [ toEdit, setToEdit ] = useState( false );
 	const [ ingredientToEdit, setIngredientToEdit ] = useState();
-	const [ isDisplayed, setIsDisplayed ] = useState( true );
+	const [ isDisplayed, setIsDisplayed ] = useState( false );
 
 	//to get ingredient data that user is editing
 	function editHandler ( ingredientName ) {
 		const ingredientIndex = listCntx.recipe.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
-		setToEdit( true );
 		const findIngredient = listCntx.recipe[ ingredientIndex ];
 		setIngredientToEdit( findIngredient );
+		setToEdit( true );
+		setIsDisplayed( true );
 	}
 
 	//done button after submitting updated ingredient data
@@ -32,18 +33,17 @@ function IngredientList () {
 			amount: amountInput,
 			measurement: ingredientToEdit.measurement,
 		} );
-		setIsDisplayed( false );
 	}
 
 	return (
 		<>
-			{listCntx.empty || listCntx.done || listCntx.edited ? undefined : <p>Here is your recipe list. <br/> Please press 'Done' when done adding ingredients.</p>}
+			{listCntx.empty || listCntx.done ? undefined : <p>Here is your recipe list. <br/> Please press 'Done' when done adding ingredients.</p>}
 			<div className="list">
 				{!toEdit ?
 					<>
 						<table>
 							<tbody>
-								{listCntx.empty || listCntx.done || listCntx.edited ? undefined :
+								{listCntx.empty ? undefined :
 									<tr>
 										<th>Ingredient</th>
 										<th>Amount</th>
@@ -55,10 +55,10 @@ function IngredientList () {
 										<td>{ingredient.ingredient}</td>
 										<td>{ingredient.amount}</td>
 										<td>{ingredient.measurement}</td>
-										{listCntx.edited ? undefined : <td><i className="bi bi-pencil-square" onClick={() => editHandler( ingredient.ingredient )}></i></td>}
+										{listCntx.done && !listCntx.edited ? <td><i className="bi bi-pencil-square" onClick={() => editHandler( ingredient.ingredient )}></i></td> : undefined}
 									</tr>
 								) )}
-								{listCntx.empty || listCntx.done || listCntx.edited ? undefined : <tr><td colSpan='3'><Button onClick={listCntx.doneAdding} text="Done" disabled={!listCntx.active} /></td></tr>}
+								{listCntx.empty || listCntx.done ? undefined : <tr><td colSpan='3'><Button onClick={listCntx.doneAdding} text="Done" disabled={!listCntx.active} /></td></tr>}
 							</tbody>
 						</table>
 					</>
