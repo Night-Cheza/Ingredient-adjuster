@@ -1,12 +1,13 @@
-import React, {useState, useRef} from "react";
+import React, {useState} from "react";
 import { useContext } from "react";
 import { ListContext } from "../store/recipe-list-context";
 import Button from "./Button";
 
 function IngredientList () {
 	const listCntx = useContext( ListContext );
+	const [ newAmount, setNewAmount ] = useState();
 
-	const newAmount = useRef();
+	// const newAmount = useRef();
 	const [ toEdit, setToEdit ] = useState( false );
 	const [ ingredientToEdit, setIngredientToEdit ] = useState();
 	const [ isDisplayed, setIsDisplayed ] = useState( false );
@@ -20,9 +21,12 @@ function IngredientList () {
 		setIsDisplayed( true );
 	}
 
+	function inputChangeHandler (event) {
+		setNewAmount( event.target.value )
+	}
 	//done button after submitting updated ingredient data
 	function doneHandler () {
-		const amountInput = newAmount.current.value.trim();
+		const amountInput = newAmount;
 		if( isNaN( amountInput ) || amountInput < 0 || amountInput.trim() === "" )
 		{
 			throw Error( 'Please provide correct amount' );
@@ -73,7 +77,7 @@ function IngredientList () {
 										</tr>
 										<tr>
 											<td>{ingredientToEdit.ingredient}</td>
-											<td><input placeholder={ingredientToEdit.amount} ref={newAmount}/></td>
+											<td><input placeholder={ingredientToEdit.amount} value={newAmount} onChange={inputChangeHandler}/></td>
 											<td>{ingredientToEdit.measurement}</td>
 										</tr>
 										<tr>
