@@ -21,12 +21,10 @@ function ListDisplay () {
 					<IngredientList />
 				</>
 			}
-			{listCntx.edited ?
+			{listCntx.edited &&
 				<>
 					<IngredientList />
 				</>
-				:
-				undefined
 			}
 		</>
 	)
