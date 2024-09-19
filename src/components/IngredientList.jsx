@@ -6,13 +6,11 @@ import Button from "./Button";
 function IngredientList () {
 	const listCntx = useContext( ListContext );
 	const [ newAmount, setNewAmount ] = useState();
-
-	// const newAmount = useRef();
 	const [ toEdit, setToEdit ] = useState( false );
 	const [ ingredientToEdit, setIngredientToEdit ] = useState();
 	const [ isDisplayed, setIsDisplayed ] = useState( false );
 
-	//to get ingredient data that user is editing
+	//RETRIEVING INGREDIENT TO EDIT
 	function editHandler ( ingredientName ) {
 		const ingredientIndex = listCntx.recipe.findIndex( ( ingredient ) => ingredient.ingredient === ingredientName );
 		const findIngredient = listCntx.recipe[ ingredientIndex ];
@@ -24,7 +22,7 @@ function IngredientList () {
 	function inputChangeHandler (event) {
 		setNewAmount( event.target.value )
 	}
-	//done button after submitting updated ingredient data
+	//SUBMITTING EDITED AMOUNT
 	function doneHandler () {
 		const amountInput = newAmount;
 		if( isNaN( amountInput ) || amountInput < 0 || amountInput.trim() === "" )
@@ -85,6 +83,7 @@ function IngredientList () {
 										</tr>
 									</tbody>
 								</table>
+								<p className='errorMessage'>'Please enter correct amount'</p>
 							</> :
 							undefined
 						}
