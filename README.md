@@ -1,0 +1,1 @@
+This app is created to help with adjustment of called for a particular recipe ingredients when having one of the ingredients less than is needed or if a user would like to use more of a particular ingredient than is needed.
