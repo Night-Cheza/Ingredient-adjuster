@@ -7,7 +7,8 @@ import { recalculateRecipe } from "./utils/conversionUtils";
 function App() {
   const [ingredients, setIngredients] = useState([]);
   const [recalculated, setRecalculated] = useState([]);
-  const [isAdjusting, setIsAdjusting] = useState(false);
+	const [ isAdjusting, setIsAdjusting ] = useState( false );
+	 const [isRecalculated, setIsRecalculated] = useState(false);
 
   const addIngredient = (ingredient) => {
     setIngredients([...ingredients, { ...ingredient, amount: parseFloat(ingredient.amount) }]);
@@ -16,7 +17,7 @@ function App() {
   const handleRecalculation = (selectedIngredient, newAmount) => {
     const updatedRecipe = recalculateRecipe(ingredients, selectedIngredient, newAmount);
     setRecalculated(updatedRecipe);
-    setIsAdjusting(false); // Hide adjustment mode after recalculating
+    setIsRecalculated(true); // Hide adjustment mode after recalculating
   };
 
   return (
@@ -24,16 +25,16 @@ function App() {
       <h1>Recipe Ingredient Recalculator</h1>
 
       {/* Hide form if adjusting an ingredient */}
-      {!isAdjusting && <RecipeForm onAddIngredient={addIngredient} />}
+      {!isRecalculated && !isAdjusting && <RecipeForm onAddIngredient={addIngredient} />}
 
-      <IngredientList
+			{!isRecalculated && <IngredientList
 				ingredients={ingredients}
 				isAdjusting={isAdjusting}
-        onAdjust={setIsAdjusting(true)}
-        onRecalculate={handleRecalculation}
-      />
+				onAdjust={setIsAdjusting( true )}
+				onRecalculate={handleRecalculation}
+			/>}
 
-      {recalculated.length > 0 && <RecalculatedIngredients recalculated={recalculated} />}
+      {isRecalculated && <RecalculatedIngredients recalculated={recalculated} />}
     </div>
   );
 }
