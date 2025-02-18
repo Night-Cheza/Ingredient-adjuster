@@ -22,10 +22,10 @@ const IngredientList = ({ ingredients, onAdjust, onRecalculate, isAdjusting }) =
       {ingredients.length > 0 && <h2>Recipe Ingredients</h2>}
 
       <ul>
-        {ingredients.map((ing, index) => (
+        {ingredients.map((ingredient, index) => (
           <li key={index}>
-            {ing.name}: {ing.amount} {ing.unit}
-            <button onClick={() => handleAdjust(ing)}>Adjust</button>
+            {ingredient.name}: {ingredient.amount} {ingredient.unit}
+            <button onClick={() => handleAdjust(ingredient)}>Adjust</button>
           </li>
         ))}
       </ul>
