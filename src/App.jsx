@@ -12,14 +12,15 @@ function App() {
     setIngredients([...ingredients, { ...ingredient, amount: parseFloat(ingredient.amount) }]);
   };
 
-  const handleRecalculation = () => {
-    setRecalculated(recalculateRecipe(ingredients));
+  const handleRecalculation = (selectedIngredient, newAmount) => {
+    const updatedRecipe = recalculateRecipe(ingredients, selectedIngredient, newAmount);
+    setRecalculated(updatedRecipe);
   };
 
   return (
     <div>
       <h1>Recipe Ingredient Recalculator</h1>
-      <RecipeForm onAddIngredient={addIngredient} onRecalculate={handleRecalculation} />
+      <RecipeForm onAddIngredient={addIngredient} />
       <IngredientList ingredients={ingredients} onAdjust={handleRecalculation} />
       {recalculated.length > 0 && <RecalculatedIngredients recalculated={recalculated} />}
     </div>
