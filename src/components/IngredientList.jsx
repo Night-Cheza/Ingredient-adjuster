@@ -12,7 +12,9 @@ const IngredientList = ({ ingredients, onAdjust }) => {
 
   return (
     <div>
-      <h2>Recipe Ingredients</h2>
+      {/* Only display the header if ingredients exist */}
+      {ingredients.length > 0 && <h2>Recipe Ingredients</h2>}
+
       <ul>
         {ingredients.map((ingredient, index) => (
           <li key={index}>
@@ -39,4 +41,3 @@ const IngredientList = ({ ingredients, onAdjust }) => {
 };
 
 export default IngredientList;
-
