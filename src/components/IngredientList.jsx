@@ -1,30 +1,37 @@
 import { useState } from "react";
 
-const IngredientList = ({ ingredients, onAdjust }) => {
+const IngredientList = ({ ingredients, onAdjust, onRecalculate, isAdjusting }) => {
   const [adjustedIngredient, setAdjustedIngredient] = useState(null);
   const [newAmount, setNewAmount] = useState("");
 
   const handleAdjust = (ingredient) => {
+    setAdjustedIngredient(ingredient);
+    onAdjust();
+  };
+
+  const handleRecalculate = () => {
     if (!newAmount || newAmount <= 0) return;
-    onAdjust(ingredient, parseFloat(newAmount));
+    onRecalculate(adjustedIngredient, parseFloat(newAmount));
+    setAdjustedIngredient(null);
     setNewAmount("");
   };
 
   return (
-    <div>
-      {/* Only display the header if ingredients exist */}
+		<div>
+			{/*conditionally displaying header*/}
       {ingredients.length > 0 && <h2>Recipe Ingredients</h2>}
 
       <ul>
-        {ingredients.map((ingredient, index) => (
+        {ingredients.map((ing, index) => (
           <li key={index}>
-            {ingredient.name}: {ingredient.amount} {ingredient.unit}
-            <button onClick={() => setAdjustedIngredient(ingredient)}>Adjust</button>
+            {ing.name}: {ing.amount} {ing.unit}
+            <button onClick={() => handleAdjust(ing)}>Adjust</button>
           </li>
         ))}
       </ul>
 
-      {adjustedIngredient && (
+			{/*conditionally displaying form*/}
+      {isAdjusting && adjustedIngredient && (
         <div>
           <h3>Adjust {adjustedIngredient.name}</h3>
           <input
@@ -33,7 +40,7 @@ const IngredientList = ({ ingredients, onAdjust }) => {
             value={newAmount}
             onChange={(e) => setNewAmount(e.target.value)}
           />
-          <button onClick={() => handleAdjust(adjustedIngredient)}>Recalculate</button>
+          <button onClick={handleRecalculate}>Recalculate</button>
         </div>
       )}
     </div>
