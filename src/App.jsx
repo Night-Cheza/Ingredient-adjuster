@@ -2,7 +2,7 @@ import { useState } from "react";
 import RecipeForm from "./components/RecipeForm";
 import IngredientList from "./components/IngredientList";
 import RecalculatedIngredients from "./components/RecalculatedIngredients";
-import { recalculateRecipe } from "./utils/conversionUtils";
+import { recalculateRecipe } from "./utils/conversionUtil";
 
 function App() {
 	const [ingredients, setIngredients] = useState([]);
