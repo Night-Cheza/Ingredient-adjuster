@@ -8,32 +8,37 @@ export const recalculateRecipe = ( ingredients, selectedIngredient, newAmount ) 
 	return ingredients.map((ingredient) => {
 		let newAmount = ingredient.amount * scaleFactor;
 		let newUnit = ingredient.unit; // Default to original unit
-		let convertedPart = null
+		let convertedValues = [];
 
 		// Extract whole and fractional parts
 		const wholePart = Math.floor(newAmount);
 		const fractionalPart = newAmount - wholePart;
+
 		// Check if the fractional part falls within the conversion threshold
-		const shouldConvert = (fractionalPart < 0.99 && fractionalPart > 0.50) || (fractionalPart > 0.01 && fractionalPart < 0.50);
+		const shouldConvert = (fractionalPart < 0.99 && fractionalPart > 0.50) || (fractionalPart > 0.50 && fractionalPart < 0.01);
 
 		// Convert unit only if different from selected ingredient
-		if (shouldConvert && ingredient.unit !== selectedIngredient.unit) {
-			convertedPart = convertUnit(fractionalPart, ingredient.unit, getSmallerUnit(ingredient.unit));
-			newUnit = ingredient.unit; // Keep the main unit unchanged
+		if (shouldConvert) {
+			const smallerUnits = getSmallerUnits(ingredient.unit);
+			smallerUnits.forEach((smallerUnit) => {
+				const convertedAmount = convertUnit(fractionalPart, ingredient.unit, smallerUnit);
+				if (convertedAmount) {
+					convertedValues.push({ amount: parseFloat(convertedAmount.toFixed(2)), unit: smallerUnit });
+				}
+			});
 		}
 
 		return {
-			...ingredient,
-      amount: wholePart, // Keep the whole number in original unit
-      unit: newUnit,
-      convertedAmount: convertedPart, // Converted fractional part
-      convertedUnit: convertedPart ? getSmallerUnit(ingredient.unit) : null, // Store new unit for fractional part
+			name: ingredient.name,
+			amount: shouldConvert ? wholePart : parseFloat(newAmount.toFixed(2)),
+			unit: newUnit,
+			convertedValues, // Store multiple conversion possibilities
 		};
 	});
 };
 
 // Function to determine the next smaller unit
-const getSmallerUnit = (unit) => {
+const getSmallerUnits = (unit) => {
 	const unitHierarchy = {
 		"Cup (250ml)": ["Tbsp", "tsp", "ml"],
 		"Tablespoon (tbsp)": ["tsp", "g", "ml"],

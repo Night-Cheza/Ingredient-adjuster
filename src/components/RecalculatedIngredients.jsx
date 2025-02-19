@@ -5,10 +5,29 @@ const RecalculatedIngredients = ({ recalculated }) => {
       <ul>
         {recalculated.map((ingredient, index) => (
           <li key={index}>
-            {ingredient.name}: {ingredient.amount.toFixed(2)} {ingredient.unit}
+            {ingredient.name}: {ingredient.amount} {ingredient.unit}
+            {ingredient.convertedValues.length > 0 && (
+              <>
+                {" and "}
+                <span>{ingredient.convertedValues[0].amount} {ingredient.convertedValues[0].unit}</span>
+                {ingredient.convertedValues.length > 1 && (
+                  <>
+                    {" ("}
+                    {ingredient.convertedValues.slice(1).map((conv, idx) => (
+                      <span key={idx}>
+                        {conv.amount} {conv.unit}
+                        {idx < ingredient.convertedValues.length - 2 ? " or " : ""}
+                      </span>
+                    ))}
+                    {")"}
+                  </>
+                )}
+              </>
+            )}
           </li>
-        ))}
-      </ul>
+				) )}
+			</ul>
+			<></>
     </div>
   );
 };
