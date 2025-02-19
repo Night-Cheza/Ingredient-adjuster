@@ -27,12 +27,14 @@ function App() {
       {/* Hide form if adjusting an ingredient */}
       {!isRecalculated && !isAdjusting && <RecipeForm onAddIngredient={addIngredient} />}
 
-			{!isRecalculated && <IngredientList
-				ingredients={ingredients}
-				isAdjusting={isAdjusting}
-				onAdjust={setIsAdjusting( true )}
-				onRecalculate={handleRecalculation}
-			/>}
+			{!isRecalculated && (
+				<IngredientList
+					ingredients={ingredients}
+					isAdjusting={isAdjusting}
+					onAdjust={setIsAdjusting( true )}
+					onRecalculate={handleRecalculation}
+				/>
+			)}
 
       {isRecalculated && <RecalculatedIngredients recalculated={recalculated} />}
     </div>
