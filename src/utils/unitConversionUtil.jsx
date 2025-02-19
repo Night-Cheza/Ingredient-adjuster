@@ -1,11 +1,11 @@
 export const unitConversions = {
   "Cup (250ml)": { "Tbsp": 16, "ml": 250 },
-  "Tbsp": { "tsp": 3, "g": 15, "ml": 15 },
-  "tsp": { "ml": 5, "g": 5 },
-  "oz": { "g": 28.35, "ml": 29.57 },
-  "L": { "ml": 1000 },
-  "kg": { "g": 1000 },
-  "lb": { "g": 453.6 },
+  "Tablespoon (tbsp)": { "tsp": 3, "g": 14.18, "ml": 15, "oz": 0.5 },
+  "Teaspoon (tsp)": { "g": 5.69, "ml": 5 },
+  "Ounce (oz)": { "g": 28.35, "ml": 29.57 },
+  "Liter (L)": { "ml": 1000 },
+  "Kilogram (kg)": { "g": 1000 },
+  "Pound (lb)": { "g": 453.6 },
 };
 
 /**
