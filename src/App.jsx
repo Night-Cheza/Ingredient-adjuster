@@ -20,12 +20,17 @@ function App() {
 		setIsRecalculated(true); // Hide adjustment mode after recalculating
 	};
 
-		const resetRecipe = () => {
-			setIngredients([]);
-			setRecalculated([]);
-			setIsAdjusting(false);
-			setIsRecalculated(false);
+	const resetRecipe = () => {
+		setIngredients([]);
+		setRecalculated([]);
+		setIsAdjusting(false);
+		setIsRecalculated(false);
 	};
+
+	const handleCancel = () => {
+		setIsRecalculated(false);
+		setIsAdjusting(false)
+	}
 
 	return (
 		<div>
@@ -38,9 +43,10 @@ function App() {
 				<IngredientList
 					ingredients={ingredients}
 					isAdjusting={isAdjusting}
-					onAdjust={setIsAdjusting( true )}
+					onAdjust={() => setIsAdjusting( true )}
 					onRecalculate={handleRecalculation}
 					isRecalculated={isRecalculated}
+					onCancel={handleCancel}
 				/>
 			)}
 
