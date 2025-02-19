@@ -1,0 +1,51 @@
+body {
+	margin: 0;
+	font-family: 'Open Sans', 'Verdana', 'Arial', 'Helvetica', sans-serif;
+	font-size: 1.5rem;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('./assets/background.png');
+	background-position: center no-repeat;
+	background-size: cover;
+}
+
+
+h1,
+h2,
+h3
+{
+	text-align: center;
+}
+
+form,
+ul {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: auto;
+	max-width: 400px;
+}
+
+li,
+button {
+	min-height: 40px;
+	max-height: fit-content;
+}
+
+input,
+select,
+button {
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+button {
+	background-color: #007bff;
+	color: white;
+	cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
