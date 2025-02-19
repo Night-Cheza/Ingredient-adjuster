@@ -31,7 +31,7 @@ const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isR
 					<li key={index}>
 						{ingredient.name}: {ingredient.amount} {ingredient.unit}
 						{ingredients.length > 1 && !adjustedIngredient && !isRecalculated && (
-							<button onClick={() => handleAdjust(ingredient)}>Adjust</button>
+							<button className="btn" onClick={() => handleAdjust(ingredient)}>Adjust</button>
 						)}
 					</li>
 				))}
@@ -39,7 +39,7 @@ const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isR
 
 			{/*conditionally displaying form*/}
 			{isAdjusting && adjustedIngredient && (
-				<div>
+				<div className="newValue">
 					<h3>Adjust {adjustedIngredient.name}</h3>
 					<input
 						type="number"
@@ -47,8 +47,8 @@ const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isR
 						value={newAmount}
 						onChange={(e) => setNewAmount(e.target.value)}
 					/>
-					<button onClick={handleRecalculate}>Recalculate</button>
-					<button onClick={handleCancel}>Cancel</button>
+					<button className="btn" onClick={handleRecalculate}>Recalculate</button>
+					<button className="btn" onClick={handleCancel}>Cancel</button>
 				</div>
 			)}
 		</div>
