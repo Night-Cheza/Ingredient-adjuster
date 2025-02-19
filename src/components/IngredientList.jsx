@@ -1,4 +1,6 @@
-import { useState } from "react";
+import {useState} from "react";
+
+import "./IngredientList.css"
 
 const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isRecalculated, onCancel }) => {
 	const [adjustedIngredient, setAdjustedIngredient] = useState(null);
