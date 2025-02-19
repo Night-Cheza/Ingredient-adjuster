@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const IngredientList = ({ ingredients, onAdjust, onRecalculate, isAdjusting }) => {
+const IngredientList = ({ ingredients, onAdjust, onRecalculate, isAdjusting, isRecalculated }) => {
   const [adjustedIngredient, setAdjustedIngredient] = useState(null);
   const [newAmount, setNewAmount] = useState("");
 
@@ -13,7 +13,6 @@ const IngredientList = ({ ingredients, onAdjust, onRecalculate, isAdjusting }) =
     if (!newAmount || newAmount <= 0) return;
     onRecalculate(adjustedIngredient, parseFloat(newAmount));
     setAdjustedIngredient(null);
-    setNewAmount("");
   };
 
   return (
@@ -25,7 +24,9 @@ const IngredientList = ({ ingredients, onAdjust, onRecalculate, isAdjusting }) =
         {ingredients.map((ingredient, index) => (
           <li key={index}>
             {ingredient.name}: {ingredient.amount} {ingredient.unit}
-            <button onClick={() => handleAdjust(ingredient)}>Adjust</button>
+            {ingredients.length > 1 && !adjustedIngredient && !isRecalculated && (
+              <button onClick={() => handleAdjust(ingredient)}>Adjust</button>
+            )}
           </li>
         ))}
       </ul>

@@ -33,6 +33,7 @@ function App() {
 					isAdjusting={isAdjusting}
 					onAdjust={setIsAdjusting( true )}
 					onRecalculate={handleRecalculation}
+					isRecalculated={isRecalculated}
 				/>
 			)}
 
