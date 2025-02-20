@@ -41,17 +41,19 @@ const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isR
 
 			{/*conditionally displaying form*/}
 			{isAdjusting && adjustedIngredient && (
-				<div className="newValue">
+				<>
 					<h3>Adjust {adjustedIngredient.name}</h3>
-					<input
-						type="number"
-						placeholder={`New value for ${adjustedIngredient.name}`}
-						value={newAmount}
-						onChange={(e) => setNewAmount(e.target.value)}
-					/>
-					<button className="btn" onClick={handleRecalculate}>Recalculate</button>
-					<button className="btn" onClick={handleCancel}>Cancel</button>
-				</div>
+					<div className="newValue">
+						<input
+							type="number"
+							placeholder={`New value for ${adjustedIngredient.name}`}
+							value={newAmount}
+							onChange={(e) => setNewAmount(e.target.value)}
+						/>
+						<button className="btn" onClick={handleRecalculate}>Recalculate</button>
+						<button className="btn" onClick={handleCancel}>Cancel</button>
+					</div>
+				</>
 			)}
 		</div>
 	);
