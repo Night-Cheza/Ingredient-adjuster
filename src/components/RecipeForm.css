@@ -1,0 +1,14 @@
+.input-error {
+	border: 2px solid red !important;
+}
+
+.error-message {
+	min-height: 1.2rem;
+	color: red;
+	font-size: 0.85rem;
+	text-align: center;
+}
+
+h2 {
+	margin-bottom: 1rem;
+}
