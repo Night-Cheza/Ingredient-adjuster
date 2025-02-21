@@ -15,7 +15,7 @@ export const recalculateRecipe = ( ingredients, selectedIngredient, newAmount ) 
 		const fractionalPart = newAmount - wholePart;
 
 		// Check if the fractional part falls within the conversion threshold
-		const shouldConvert = (fractionalPart < 0.99 && fractionalPart > 0.50) || (fractionalPart > 0.50 && fractionalPart < 0.01);
+		const shouldConvert = ((fractionalPart < 0.99 && fractionalPart > 0.50) || (fractionalPart < 0.50 && fractionalPart > 0.00)) && ingredient.unit !== "Piece";
 
 		// Convert unit only if different from selected ingredient
 		if (shouldConvert) {
