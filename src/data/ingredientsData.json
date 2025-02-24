@@ -1,0 +1,316 @@
+[
+	{
+		"name": "water",
+		"type": "liquid",
+		"ml_per_cup_us": 240,
+		"ml_per_cup_metric": 250,
+		"ml_per_ounce": 29.57
+	},
+	{
+		"name": "milk",
+		"type": "liquid",
+		"ml_per_cup_us": 240,
+		"ml_per_cup_metric": 250,
+		"ml_per_ounce": 29.57
+	},
+	{
+		"name": "oil",
+		"type": "liquid",
+		"ml_per_cup_us": 240,
+		"ml_per_cup_metric": 250,
+		"ml_per_ounce": 29.57
+	},
+		{
+		"name": "honey",
+		"type": "liquid",
+		"ml_per_cup_us": 240,
+		"ml_per_cup_metric": 250,
+		"ml_per_ounce": 29.5
+	},
+	{
+		"name": "vanilla extract",
+		"type": "liquid",
+		"ml_per_cup_us": 240,
+		"ml_per_cup_metric": 250,
+		"ml_per_ounce": 29.5
+	},
+	{
+		"name": "maple syrup",
+		"type": "liquid",
+		"ml_per_cup_us": 240,
+		"ml_per_cup_metric": 250,
+		"ml_per_ounce": 29.5
+	},
+	{
+		"name": "soy sauce",
+		"type": "liquid",
+		"ml_per_cup_us": 240,
+		"ml_per_cup_metric": 250,
+		"ml_per_ounce": 29.5
+	},
+	{
+		"name": "whipping cream",
+		"type": "liquid",
+		"ml_per_cup_us": 240,
+		"ml_per_cup_metric": 250,
+		"ml_per_ounce": 29.5
+	},
+	{
+		"name": "butter",
+		"type": "solid",
+		"g_per_cup_us": 226.7,
+		"g_per_cup_metric": 227,
+		"g_per_tablespoon": 14.2,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "egg",
+		"type": "piece",
+		"g_per_piece": 57
+	},
+	{
+		"name": "flour",
+		"subname":"all-purpose",
+		"type": "powder",
+		"g_per_cup_us": 120.0,
+		"g_per_cup_metric": 125.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": " flour",
+		"subname": "whole wheat",
+		"type": "powder",
+		"g_per_cup_us": 113.0,
+		"g_per_cup_metric": 118.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "flour",
+		"subname": "bread",
+		"type": "powder",
+		"g_per_cup_us": 120.0,
+		"g_per_cup_metric": 125.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "flour",
+		"subname": "cake",
+		"type": "powder",
+		"g_per_cup_us": 114.0,
+		"g_per_cup_metric": 119.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "flour",
+		"subname": "self-rising",
+		"type": "powder",
+		"g_per_cup_us": 120.0,
+		"g_per_cup_metric": 125.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "flour",
+		"subname": "instant",
+		"type": "powder",
+		"g_per_cup_us": 120.0,
+		"g_per_cup_metric": 125.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "flour",
+		"subname": "00",
+		"type": "powder",
+		"g_per_cup_us": 116.0,
+		"g_per_cup_metric": 121.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "flour",
+		"subname": "rye",
+		"type": "powder",
+		"g_per_cup_us": 102.0,
+		"g_per_cup_metric": 106.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "sugar",
+		"subname": "granulated",
+		"type": "solid",
+		"g_per_cup_us": 200.0,
+		"g_per_cup_metric": 214.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "sugar",
+		"subname": "brown",
+		"type": "solid",
+		"g_per_cup_us": 215.0,
+		"g_per_cup_metric": 224.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "sugar",
+		"subname": "confectioners icing",
+		"type": "solid",
+		"g_per_cup_us": 115.0,
+		"g_per_cup_metric": 120.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "sugar",
+		"subname": "superfine",
+		"type": "solid",
+		"g_per_cup_us": 200.0,
+		"g_per_cup_metric": 214.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "sugar",
+		"subname": "coconut",
+		"type": "solid",
+		"g_per_cup_us": 170.0,
+		"g_per_cup_metric": 180.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "sugar",
+		"subname": "date",
+		"type": "solid",
+		"g_per_cup_us": 150.0,
+		"g_per_cup_metric": 160.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "sugar",
+		"subname": "cane",
+		"type": "solid",
+		"g_per_cup_us": 200.0,
+		"g_per_cup_metric": 214.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "sugar",
+		"subname": "caster",
+		"type": "solid",
+		"g_per_cup_us": 200.0,
+		"g_per_cup_metric": 214.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "sugar",
+		"subname": "raw",
+		"type": "solid",
+		"g_per_cup_us": 220.0,
+		"g_per_cup_metric": 230.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "salt",
+		"type": "solid",
+		"g_per_cup_us": 288.0,
+		"g_per_cup_metric": 300.0,
+		"g_per_tablespoon": 18.0,
+		"g_per_teaspoon": 6.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "baking powder",
+		"type": "powder",
+		"g_per_cup_us": 192.0,
+		"g_per_cup_metric": 200.0,
+		"g_per_tablespoon": 12.0,
+		"g_per_teaspoon" : 4.0 ,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "baking soda",
+		"type": "solid",
+		"g_per_cup_us": 336.0,
+		"g_per_cup_metric": 350.0,
+		"g_per_tablespoon": 21.0,
+		"g_per_teaspoon": 7.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "yeast",
+		"subname": "dry",
+		"type": "powder",
+		"g_per_cup_us": 744.0,
+		"g_per_cup_metric": 775.0,
+		"g_per_tablespoon": 9.3,
+		"g_per_teaspoon": 3.1,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "cheese",
+		"type": "solid",
+		"g_per_cup_us": 96.0,
+		"g_per_cup_metric": 100.0,
+		"g_per_tablespoon": 6.0,
+		"g_per_teaspoon": 2.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "cocoa powder",
+		"type": "powder",
+		"g_per_cup_us": 96.0,
+		"g_per_cup_metric": 100.0,
+		"g_per_tablespoon": 6.0,
+		"g_per_teaspoon": 2.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "cornstarch",
+		"type": "powder",
+		"g_per_cup_us": 120.0,
+		"g_per_cup_metric": 125.0,
+		"g_per_tablespoon": 7.5,
+		"g_per_teaspoon": 2.5,
+		"g_per_ounce": 28.35
+	},
+		{
+		"name": "cornmeal",
+		"type": "powder",
+		"g_per_cup_us": 158.0,
+		"g_per_cup_metric": 165.0,
+		"g_per_tablespoon": 10.3,
+		"g_per_teaspoon": 3.4,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "rice",
+		"type": "solid",
+		"g_per_cup_us": 170.0,
+		"g_per_cup_metric": 178.0,
+		"g_per_tablespoon": 11.1,
+		"g_per_teaspoon": 3.7,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "rolled oats",
+		"type": "solid",
+		"g_per_cup_us": 96.0,
+		"g_per_cup_metric": 100.0,
+		"g_per_tablespoon": 6.0,
+		"g_per_teaspoon": 2.0,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "chocolate chips",
+		"type": "solid",
+		"g_per_cup_us": 170.0,
+		"g_per_cup_metric": 180.0,
+		"g_per_tablespoon": 10.6,
+		"g_per_teaspoon": 3.5,
+		"g_per_ounce": 28.35
+	},
+	{
+		"name": "chocolate",
+		"type": "solid",
+		"g_per_cup_us": 125.0,
+		"g_per_cup_metric": 130.0,
+		"g_per_tablespoon": 8.1,
+		"g_per_teaspoon": 2.7,
+		"g_per_ounce": 28.35
+	}
+]
