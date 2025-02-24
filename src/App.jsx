@@ -37,7 +37,7 @@ function App() {
 			<h1>Recipe Ingredient Recalculator</h1>
 
 			{/* Hide form if adjusting an ingredient */}
-			{!isRecalculated && !isAdjusting && <RecipeForm onAddIngredient={addIngredient} />}
+			{!isRecalculated && !isAdjusting && <RecipeForm onAddIngredient={addIngredient} ingredients={ingredients}/>}
 
 			{!isRecalculated && (
 				<IngredientList

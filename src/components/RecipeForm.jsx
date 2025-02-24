@@ -2,9 +2,10 @@ import {useState} from "react";
 
 import "./RecipeForm.css"
 
-const RecipeForm = ({ onAddIngredient }) => {
+const RecipeForm = ({ onAddIngredient, ingredients }) => {
 	const [ ingredient, setIngredient ] = useState( {name: "", amount: "", unit: ""} );
-	const [ error, setError ] = useState({ name: false, amount: false, unit: false });
+	const [ error, setError ] = useState({name: false, amount: false, unit: false, duplicate: false} );
+	const [errorMessage, setErrorMessage] = useState("One or more inputs are incorrect or empty.");
 
 	const isValidIngredientName = (name) => {
 		// Check if string is not a number and has more than one letter
@@ -15,7 +16,7 @@ const RecipeForm = ({ onAddIngredient }) => {
 		e.preventDefault();
 
 		let hasError = false;
-			let newErrors = { name: false, amount: false, unit: false };
+		let newErrors = { name: false, amount: false, unit: false, duplicate: false};
 
 		if (!ingredient.name.trim() || !isValidIngredientName(ingredient.name)) {
 			newErrors.name = true;
@@ -32,25 +33,38 @@ const RecipeForm = ({ onAddIngredient }) => {
 			hasError = true;
 		}
 
-	if (hasError) {
-		setError(newErrors);
-		return;
-	}
+		//Check if ingredient already exists (case-insensitive)
+		const isDuplicate = ingredients.find(
+			(newIngredient) => newIngredient.name.trim().toLowerCase() === ingredient.name.trim().toLowerCase()
+		);
+
+		if( isDuplicate )	{
+			newErrors.name = true;
+			newErrors.duplicate = true
+			hasError = true;
+			setErrorMessage("You already have this ingredient in the list.");
+		}
+
+		if( hasError ) {
+			setError( newErrors );
+			return;
+		}
 
 		onAddIngredient({
 			...ingredient,
 			name: ingredient.name.trim(), //name without extra spaces
-			unit: ingredient.unit.trim(), //unit without extra spaces});
+			unit: ingredient.unit.trim(), //unit without extra spaces);
 		})
 		setIngredient( {name: "", amount: "", unit: ""} );
-		setError({ name: false, amount: false, unit: false });
-		};
+		setError( {name: false, amount: false, unit: false, duplicate: false} );
+		setErrorMessage( "" );
+	};
 
 	return (
 		<div>
 			<h2>Add Ingredients</h2>
 			<form onSubmit={handleSubmit}>
-				<div className="error-message">{(error.amount || error.unit || error.name) && <>One or more inputs are incorrect or empty.</>}</div>
+				<div className="error-message">{(error.amount || error.unit || error.name || error.duplicate) && <>{errorMessage}</>}</div>
 				<input
 					className={error.name ? "input-error" : ""}
 					type="text" placeholder="Ingredient Name"
@@ -71,7 +85,7 @@ const RecipeForm = ({ onAddIngredient }) => {
 				>
 					<option value="">Select Measurement</option>
 					{
-						[ "Cup (250ml)","Tablespoon (tbsp)", "Teaspoon (tsp)", "Ounce (oz)", "Liter (L)", "Milliliters (ml)", "Kilogram (kg)", "Gram (g)", "Pound (lb)", "Piece" ].map( ( unit ) => (
+						[ "Cup (250ml)","Cup (240ml)", "Tablespoon (tbsp)", "Teaspoon (tsp)", "Ounce (oz)", "Liter (L)", "Milliliters (ml)", "Kilogram (kg)", "Gram (g)", "Pound (lb)", "Piece" ].map( ( unit ) => (
 						<option key={unit} value={unit}>{unit}</option>
 					))}
 				</select>
