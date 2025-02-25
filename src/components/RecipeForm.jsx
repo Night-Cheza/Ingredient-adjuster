@@ -8,8 +8,8 @@ const RecipeForm = ({ onAddIngredient, ingredients }) => {
 	const [errorMessage, setErrorMessage] = useState("One or more inputs are incorrect or empty.");
 
 	const isValidIngredientName = (name) => {
-		// Check if string is not a number and has more than one letter
-		return isNaN(name) && name.trim().length > 1;
+		// Check if entered ingredient name contains only letters and spaces
+		return /^[A-Za-z\s]+$/.test(name.trim()) && name.trim().length > 1;
 	};
 
 	const handleSubmit = (e) => {
