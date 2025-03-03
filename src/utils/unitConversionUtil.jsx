@@ -8,7 +8,7 @@ const convertUnits = (amount, fromUnit, ingredientName) => {
 		return { convertedAmount: null, convertedUnit: null };
 	}
 
-	// ✅ Find the ingredient in JSON
+	// Find the ingredient in JSON
 	let ingredient = ingredientData.find(
 		(ing) => ingredientName.toLowerCase().includes(ing.name.toLowerCase())
 	);
