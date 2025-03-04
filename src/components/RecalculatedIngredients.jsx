@@ -1,4 +1,6 @@
-const RecalculatedIngredients = ({ recalculated, onReset }) => {
+const RecalculatedIngredients = ( {recalculated, onReset} ) => {
+	// const handleConvert = () => { };
+
 	return (
 		<div>
 			<h2>Adjusted Recipe</h2>
@@ -6,24 +8,7 @@ const RecalculatedIngredients = ({ recalculated, onReset }) => {
 				{recalculated.map((ingredient, index) => (
 					<li key={index}>
 						{ingredient.name}: {ingredient.amount} {ingredient.unit}
-						{ingredient.convertedValues.length > 0 && (
-							<>
-								{" and "}
-								<span>{ingredient.convertedValues[0].amount} {ingredient.convertedValues[0].unit}</span>
-								{ingredient.convertedValues.length > 1 && (
-									<>
-										{" ("}
-										{ingredient.convertedValues.slice(1).map((conv, idx) => (
-											<span key={idx}>
-												{conv.amount} {conv.unit}
-												{idx < ingredient.convertedValues.length - 2 ? " or " : ""}
-											</span>
-										))}
-										{")"}
-									</>
-								)}
-							</>
-						)}
+						{/* <button onClick={handleConvert}>Convert</button> */}
 					</li>
 				) )}
 				<button className ="resetbtn" onClick={onReset}>Reset</button>
