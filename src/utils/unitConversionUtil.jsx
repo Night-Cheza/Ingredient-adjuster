@@ -1,6 +1,38 @@
 import ingredientData from "../data/ingredientsData.json";
 
-export const nonConvertibleUnits = ["Piece", "Gram (g)", "Milliliters (ml)"];
+export const nonConvertibleUnits = [ "Piece", "Gram (g)", "Milliliters (ml)" ];
+
+const conversionMap = {
+	"Cup (250ml)": {
+		liquid: { key: "ml_per_cup_metric", targetUnit: "Milliliters (ml)" },
+		solid: { key: "g_per_cup_metric", targetUnit: "Gram (g)" },
+	},
+	"Cup (240ml)": {
+		liquid: { key: "ml_per_cup_us", targetUnit: "Milliliters (ml)" },
+		solid: { key: "g_per_cup_us", targetUnit: "Gram (g)" },
+	},
+	"Tablespoon (tbsp)": {
+		liquid: { key: null, fixedValue: 3, targetUnit: "Teaspoon (tsp)" },
+		solid: { key: null, fixedValue: 3, targetUnit: "Teaspoon (tsp)" },
+	},
+	"Teaspoon (tsp)": {
+		liquid: { key: "ml_per_teaspoon", targetUnit: "Milliliters (ml)" },
+		solid: { key: "g_per_teaspoon", targetUnit: "Gram (g)" },
+	},
+	"Liter (L)": {
+		liquid: { key: null, fixedValue: 1000, targetUnit: "Milliliters (ml)" },
+	},
+	"Ounce (oz)": {
+		liquid: {  key: null, fixedValue: 29.57, targetUnit: "Milliliters (ml)" },
+		solid: {  key: null, fixedValue: 28.35, targetUnit: "Gram (g)" },
+	},
+	"Kilogram (kg)": {
+		solid: { key: null, fixedValue: 1000, targetUnit: "Gram (g)" },
+	},
+	"Pound (lb)": {
+		solid: { key: null, fixedValue: 453.6, targetUnit: "Gram (g)" },
+	},
+};
 
 const convertUnits = (amount, fromUnit, ingredientName) => {
 	// Skip conversion for "Piece", "Gram (g)", and "Milliliters (ml)"
@@ -8,143 +40,45 @@ const convertUnits = (amount, fromUnit, ingredientName) => {
 		return { convertedAmount: null, convertedUnit: null };
 	}
 
-	// Find the ingredient in JSON
-	let ingredient = ingredientData.find(
-		(ing) => ingredientName.toLowerCase().includes(ing.name.toLowerCase())
-	);
+	let ingredient = ingredientData.find((ingredient) => {
+		if (!ingredient.subname) {
+				// If there's no subname, do an exact match
+				return ingredientName.toLowerCase() === ingredient.name.toLowerCase();
+		} else {
+				// If there's a subname, check if the ingredientName includes it
+				return ingredientName.toLowerCase().includes(ingredient.subname.toLowerCase());
+		}
+	});
 
 	if (!ingredient) return { convertedAmount: null, convertedUnit: null };
 
 	let convertedValues = [];
 
-	//allowed conversions for liquid and non-liquid ingredients
-	const liquidConversions = ["Liter (L)", "Ounce (oz)", "Cup (250ml)", "Cup (240ml)", "Tablespoon (tbsp)", "Teaspoon (tsp)", "Milliliters (ml)"];
-	const solidConversions = ["Kilogram (kg)", "Pound (lb)", "Ounce (oz)", "Cup (250ml)", "Cup (240ml)", "Tablespoon (tbsp)", "Teaspoon (tsp)", "Gram (g)"];
+	const conversion = conversionMap[fromUnit];
+	if (!conversion) return convertedValues;
 
-	let allowedConversions = ingredient.type === "liquid" ? liquidConversions : solidConversions;
+	const typeKey = ingredient.type === "liquid" ? "liquid" : "solid";
+	const conversionData = conversion[typeKey];
 
-	//Check subname for non-liquid ingredients
-	if (ingredient.type !== "liquid" && ingredient.subname) {
-		if (!ingredientName.toLowerCase().includes(ingredient.subname.toLowerCase())) {
-			return { convertedAmount: null, convertedUnit: null };
-		}
+	if (!conversionData) {
+		console.error("Wrong conversion");
+		return convertedValues;
 	}
 
-	switch (fromUnit) {
-		case "Cup (250ml)":
-			if (ingredient.type === "liquid") {
-				let mlValue = ingredient.ml_per_cup_metric;
-				if (mlValue && allowedConversions.includes("Milliliters (ml)")) {
-					convertedValues.push({ amount: (amount * mlValue).toFixed(2), unit: "Milliliters (ml)" });
-				}
-			} else {
-				let gValue = ingredient.g_per_cup_metric;
-				if (gValue && allowedConversions.includes("Gram (g)")) {
-					convertedValues.push({ amount: (amount * gValue).toFixed(2), unit: "Gram (g)" });
-				}
-			}
-			break;
-		case "Cup (240ml)":
-			if( ingredient.type === "liquid" )
-			{
-				let mlValue = ingredient.ml_per_cup_us;
-				if( mlValue && allowedConversions.includes( "Milliliters (ml)" ) )
-				{
-					convertedValues.push( {amount: ( amount * mlValue ).toFixed( 2 ), unit: "Milliliters (ml)"} );
-				}
-			} else
-			{
-				let gValue = ingredient.g_per_cup_us;
-				if( gValue && allowedConversions.includes( "Gram (g)" ) )
-				{
-					convertedValues.push( {amount: ( amount * gValue ).toFixed( 2 ), unit: "Gram (g)"} );
-				}
-			}
-			break;
-		case "Tablespoon (tbsp)":
-			if( ingredient.type === "liquid" )
-			{
-				let mlValue = ingredient.ml_per_tablespoon;
-				if( mlValue &&  allowedConversions.includes("Teaspoon (tsp)") )
-				{
-					convertedValues.push( {amount: ( amount * mlValue / ingredient.ml_per_teaspoon ).toFixed( 2 ), unit: "Teaspoon (tsp)"} );
-				}
-			} else
-			{
-				let gValue = ingredient.g_per_tablespoon;
-				if( gValue && allowedConversions.includes("Teaspoon (tsp)") )
-				{
-					convertedValues.push( {amount: ( amount * gValue / ingredient.g_per_teaspoon ).toFixed( 2 ), unit: "Teaspoon (tsp)"} );
-				}
-			}
-			break;
-		case "Teaspoon (tsp)":
-						if( ingredient.type === "liquid" )
-			{
-				let mlValue = ingredient.ml_per_teaspoon;
-				if( mlValue &&  allowedConversions.includes( "Milliliters (ml)" ) )
-				{
-					convertedValues.push( {amount: ( amount * mlValue ).toFixed( 2 ), unit: "Milliliters (ml)"} );
-				}
-			} else
-			{
-				let gValue = ingredient.g_per_teaspoon;
-				if( gValue && allowedConversions.includes( "Gram (g)" ) )
-				{
-					convertedValues.push( {amount: ( amount * gValue ).toFixed( 2 ), unit: "Gram (g)"} );
-				}
-			}
-			break;
-		case "Liter (L)":
-			if (ingredient.type === "liquid") {
-				let mlValue = 1000;
-				if (mlValue && allowedConversions.includes("Milliliters (ml)")) {
-					convertedValues.push({ amount: (amount * mlValue).toFixed(2), unit: "Milliliters (ml)" });
-				}
-			} else {
-					throw console.error('Wrong conversion');
-				}
-			break;
-		case "Ounce (oz)":
-			if( ingredient.type === "liquid" )
-			{
-				let mlValue = ingredient.ml_per_ounce;
-				if( mlValue && allowedConversions.includes( "Milliliters (ml)" ) )
-				{
-					convertedValues.push( {amount: ( amount * mlValue ).toFixed( 2 ), unit: "Milliliters (ml)"} );
-				}
-			} else
-			{
-				let gValue = ingredient.g_per_ounce;
-				if( gValue && allowedConversions.includes( "Gram (g)" ) )
-				{
-					convertedValues.push( {amount: ( amount * gValue ).toFixed( 2 ), unit: "Gram (g)"} );
-				}
-			}
-			break;
-		case "Kilogram (kg)":
-			if (ingredient.type !== "liquid") {
-				let gValue = 1000;
-				if (gValue && allowedConversions.includes("Gram (g)")) {
-					convertedValues.push({ amount: (amount * gValue).toFixed(2), unit: "Gram (g)" });
-				}
-			} else {
-					throw console.error('Wrong conversion');
-				}
-			break;
-				case "Pound (lb)":
-			if (ingredient.type !== "liquid") {
-				let gValue = 453.6;
-				if (gValue && allowedConversions.includes("Gram (g)")) {
-					convertedValues.push({ amount: (amount * gValue).toFixed(2), unit: "Gram (g)" });
-				}
-			} else {
-					throw console.error('Wrong conversion');
-				}
-			break;
+	// Handle fixed values (e.g., 1L = 1000ml)
+	if (conversionData.fixedValue) {
+		convertedValues.push({ amount: (amount * conversionData.fixedValue).toFixed(2), unit: conversionData.targetUnit });
+		return convertedValues;
+	}
 
-		default:
-			break;
+	// Handle normal conversions
+	let conversionFactor = ingredient[conversionData.key];
+	if (conversionFactor && conversionData.divisor) {
+		// If there's a divisor (e.g., tbsp to tsp), apply it
+		let divisor = ingredient[conversionData.divisor] || 1;
+		convertedValues.push({ amount: (amount * conversionFactor / divisor).toFixed(2), unit: conversionData.targetUnit });
+	} else if (conversionFactor) {
+		convertedValues.push({ amount: (amount * conversionFactor).toFixed(2), unit: conversionData.targetUnit });
 	}
 
 	return convertedValues.length > 0 ? convertedValues : { convertedAmount: null, convertedUnit: null };
