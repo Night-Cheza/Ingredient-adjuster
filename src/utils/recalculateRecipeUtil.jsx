@@ -32,8 +32,7 @@ export const recalculateRecipe = (ingredients, selectedIngredient, newAmount) =>
 
 	return ingredients.map((ingredient) => ({
 			...ingredient,
-			amount: parseFloat((ingredient.amount * scaleFactor).toFixed(2)), // Only scale amounts
-			convertedValues: [], // No conversions yet
+			amount: parseFloat((ingredient.amount * scaleFactor).toFixed(2))
 	}));
 };
 
