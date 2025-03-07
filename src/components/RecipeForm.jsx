@@ -1,11 +1,22 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import { fetchIngredientList, fetchUnitList } from "../utils/fetchIngredientDataUtil";
 
 import "./RecipeForm.css"
 
 const RecipeForm = ({ onAddIngredient, ingredients }) => {
 	const [ ingredient, setIngredient ] = useState( {name: "", amount: "", unit: ""} );
+	const [ ingredientList, setIngredientList ] = useState( [] );
+	const [unitList, setUnitList] = useState([]);
 	const [ error, setError ] = useState({name: false, amount: false, unit: false, duplicate: false} );
-	const [errorMessage, setErrorMessage] = useState("One or more inputs are incorrect or empty.");
+	const [ errorMessage, setErrorMessage ] = useState( "One or more inputs are incorrect or empty." );
+
+	useEffect(() => {
+		const loadData = async () => {
+			setIngredientList(await fetchIngredientList());
+			setUnitList(await fetchUnitList());
+		};
+		loadData();
+}, []);
 
 	const isValidIngredientName = (name) => {
 		// Check if entered ingredient name contains only letters and spaces
@@ -65,12 +76,17 @@ const RecipeForm = ({ onAddIngredient, ingredients }) => {
 			<h2>Add Ingredients</h2>
 			<form onSubmit={handleSubmit}>
 				<div className="error-message">{(error.amount || error.unit || error.name || error.duplicate) && <>{errorMessage}</>}</div>
-				<input
+				<select
 					className={error.name ? "input-error" : ""}
-					type="text" placeholder="Ingredient Name"
-					value={ingredient.name}
-					onChange={( e ) => setIngredient( {...ingredient, name: e.target.value} )}
-				/>
+					// value={selectedIngredient}
+					onChange={( e ) => setIngredient( {ingredient: e.target.value })}>
+					<option value="">Choose an ingredient</option>
+					{ingredientList.map((ingredient, index) => (
+						<option key={index} value={ingredient.ingredient}>
+							{ingredient.ingredient}
+						</option>
+					))}
+				</select>
 				<input
 					className={error.amount ? "input-error" : ""}
 					type="number"
@@ -79,14 +95,12 @@ const RecipeForm = ({ onAddIngredient, ingredients }) => {
 					onChange={( e ) => setIngredient( {...ingredient, amount: e.target.value} )}
 				/>
 				<select
-					className={error.unit ? "input-error" : ""}
-					value={ingredient.unit}
-					onChange={( e ) => setIngredient( {...ingredient, unit: e.target.value} )}
-				>
-					<option value="">Select Measurement</option>
-					{
-						[ "Cup (250ml)","Cup (240ml)", "Tablespoon (tbsp)", "Teaspoon (tsp)", "Ounce (oz)", "Liter (L)", "Milliliters (ml)", "Kilogram (kg)", "Gram (g)", "Pound (lb)", "Piece" ].map( ( unit ) => (
-						<option key={unit} value={unit}>{unit}</option>
+					className={error.amount ? "input-error" : ""}
+					// value={unitList}
+					onChange={( e ) => setUnitList( {unit: e.target.value} )}>
+					<option value="">Select a unit</option>
+					{unitList.map((unit, index) => (
+						<option key={index} value={unit}>{unit.unit}</option>
 					))}
 				</select>
 				<button type="submit">Add Ingredient</button>
