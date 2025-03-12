@@ -1,106 +1,85 @@
 import {useState, useEffect} from "react";
-import { fetchIngredientList, fetchUnitList } from "../utils/fetchIngredientDataUtil";
+import { fetchCategoryList, fetchIngredientByCategory, fetchUnitList } from "../utils/fetchIngredientDataUtil";
 
 import "./RecipeForm.css"
 
-const RecipeForm = ({ onAddIngredient, ingredients }) => {
+const RecipeForm = ({ onAddIngredient }) => {
 	const [ ingredient, setIngredient ] = useState( {name: "", amount: "", unit: ""} );
 	const [ ingredientList, setIngredientList ] = useState( [] );
-	const [unitList, setUnitList] = useState([]);
-	const [ error, setError ] = useState({name: false, amount: false, unit: false, duplicate: false} );
-	const [ errorMessage, setErrorMessage ] = useState( "One or more inputs are incorrect or empty." );
+	const [ categoryList, setCategoryList ] = useState( [] );
+	const [ selectedCategory, setSelectedCategory ] = useState("");;
+	const [ unitList, setUnitList ] = useState( [] );
 
 	useEffect(() => {
-		const loadData = async () => {
-			setIngredientList(await fetchIngredientList());
-			setUnitList(await fetchUnitList());
-		};
-		loadData();
+		const loadedCategory = fetchCategoryList();
+		const loadedUnits = fetchUnitList();
+		setCategoryList( loadedCategory );
+		setUnitList( loadedUnits );
 }, []);
 
-	const isValidIngredientName = (name) => {
-		// Check if entered ingredient name contains only letters and spaces
-		return /^[A-Za-z\s]+$/.test(name.trim()) && name.trim().length > 1;
-	};
+	const handleCategoryChange = ( e ) => {
+		const category = e.target.value;
+		setSelectedCategory( category );
+		const ingredientsByCategory = fetchIngredientByCategory( category );
+		setIngredientList( ingredientsByCategory );
 
-	const handleSubmit = (e) => {
+	}
+
+	const handleSubmit = ( e ) => {
 		e.preventDefault();
-
-		let hasError = false;
-		let newErrors = { name: false, amount: false, unit: false, duplicate: false};
-
-		if (!ingredient.name.trim() || !isValidIngredientName(ingredient.name)) {
-			newErrors.name = true;
-			hasError = true;
-		}
-
-		if (!ingredient.amount || isNaN(ingredient.amount) || ingredient.amount <= 0) {
-			newErrors.amount = true;
-			hasError = true;
-		}
-
-		if (!ingredient.unit.trim()) {
-			newErrors.unit = true;
-			hasError = true;
-		}
-
-		//Check if ingredient already exists (case-insensitive)
-		const isDuplicate = ingredients.find(
-			(newIngredient) => newIngredient.name.trim().toLowerCase() === ingredient.name.trim().toLowerCase()
-		);
-
-		if( isDuplicate )	{
-			newErrors.name = true;
-			newErrors.duplicate = true
-			hasError = true;
-			setErrorMessage("You already have this ingredient in the list.");
-		}
-
-		if( hasError ) {
-			setError( newErrors );
-			return;
-		}
-
-		onAddIngredient({
+		onAddIngredient( {
 			...ingredient,
-			name: ingredient.name.trim(), //name without extra spaces
-			unit: ingredient.unit.trim(), //unit without extra spaces);
-		})
+			name: ingredient.name,
+			unit: ingredient.unit,
+		} );
 		setIngredient( {name: "", amount: "", unit: ""} );
-		setError( {name: false, amount: false, unit: false, duplicate: false} );
-		setErrorMessage( "" );
+		setSelectedCategory( "" );
+		setIngredientList( [] );
 	};
 
 	return (
 		<div>
 			<h2>Add Ingredients</h2>
 			<form onSubmit={handleSubmit}>
-				<div className="error-message">{(error.amount || error.unit || error.name || error.duplicate) && <>{errorMessage}</>}</div>
+				{/* <div className="error-message">{( error.amount || error.unit || error.name || error.duplicate ) && <>{errorMessage}</>}</div> */}
 				<select
-					className={error.name ? "input-error" : ""}
-					// value={selectedIngredient}
-					onChange={( e ) => setIngredient( {ingredient: e.target.value })}>
-					<option value="">Choose an ingredient</option>
+					// className={error.category ? "input-error" : ""}
+					value={selectedCategory}
+					onChange={handleCategoryChange}
+				>
+					<option value="">Select category</option>
+					{categoryList.map((category, index) => (
+						<option key={index} value={category}>
+							{category}
+						</option>
+					))}
+				</select>
+				<select
+					// className={error.name ? "input-error" : ""}
+					value={ingredient.name}
+					onChange={( e ) => setIngredient( {name: e.target.value} )}
+				>
+					<option value="">Select ingredient</option>
 					{ingredientList.map((ingredient, index) => (
-						<option key={index} value={ingredient.ingredient}>
-							{ingredient.ingredient}
+						<option key={index} value={ingredient.name}>
+							{ingredient.name}
 						</option>
 					))}
 				</select>
 				<input
-					className={error.amount ? "input-error" : ""}
+					// className={error.amount ? "input-error" : ""}
 					type="number"
 					placeholder="Amount"
 					value={ingredient.amount}
 					onChange={( e ) => setIngredient( {...ingredient, amount: e.target.value} )}
 				/>
 				<select
-					className={error.amount ? "input-error" : ""}
-					// value={unitList}
-					onChange={( e ) => setUnitList( {unit: e.target.value} )}>
-					<option value="">Select a unit</option>
+					// className={error.amount ? "input-error" : ""}
+					value={ingredient.unit}
+					onChange={( e ) => setIngredient( {...ingredient, unit: e.target.value} )}>
+					<option value="">Select measurement</option>
 					{unitList.map((unit, index) => (
-						<option key={index} value={unit}>{unit.unit}</option>
+						<option key={index} value={unit}>{unit}</option>
 					))}
 				</select>
 				<button type="submit">Add Ingredient</button>
