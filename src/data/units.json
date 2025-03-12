@@ -1,0 +1,82 @@
+[
+	{
+		"unit": "Cup (Imperial)",
+		"abrr": "cup"
+	},
+	{
+		"unit": "Cup (Metric)",
+		"abrr": "cup"
+	},
+	{
+		"unit": "Cup (US)",
+		"abrr": "cup"
+	},
+	{
+		"unit": "Fluid ounce (Imperial)",
+		"abrr": "oz"
+	},
+	{
+		"unit": "Fluid ounce (US)",
+		"abrr": "ml"
+	},
+	{
+		"unit": "Gallon",
+		"abrr": "gal"
+	},
+	{
+		"unit": "Gram",
+		"abrr": "g"
+	},
+	{
+		"unit": "Kilogram",
+		"abrr": "kg"
+	},
+	{
+		"unit": "Litre",
+		"abrr": "l"
+	},
+	{
+		"unit": "Milliliter",
+		"abrr": "ml"
+	},
+	{
+		"unit": "Ounce",
+		"abrr": "oz"
+	},
+	{
+		"unit": "Pint (Imperial)",
+		"abrr": "pt"
+	},
+	{
+		"unit": "Pint (US)",
+		"abrr": "pt"
+	},
+	{
+		"unit": "Pound",
+		"abrr": "lb"
+	},
+	{
+		"unit": "Quart (Imperial)",
+		"abrr": "qt"
+	},
+	{
+		"unit": "Quart (US)",
+		"abrr": "qt"
+	},
+	{
+		"unit": "Tablespoon",
+		"abrr": "tbsp"
+	},
+	{
+		"unit": "Tablespoon (Imperial)",
+		"abrr": "tbsp"
+	},
+	{
+		"unit": "Teaspoon",
+		"abrr": "tsp"
+	},
+	{
+		"unit": "Teaspoon (Imperial)",
+		"abrr": "tsp"
+	}
+]

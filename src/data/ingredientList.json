@@ -1,0 +1,205 @@
+[
+	{
+		"category": "Chocolate and Cocoa",
+		"ingredients": [
+			{"name": "Bittersweet chocolate", "type": "solid"},
+			{"name": "Chocolate chips", "type": "powder"},
+			{"name": "Cocoa nibs", "type": "solid"},
+			{"name": "Cocoa powder", "type": "powder"},
+			{"name": "Dark chocolate", "type": "solid"},
+			{"name": "Milk chocolate", "type": "solid"},
+			{"name": "Semi-sweet chocolate", "type": "solid"},
+			{"name": "Unsweetened chocolate", "type": "solid"},
+			{"name": "White chocolate", "type": "solid"}
+		]
+	},
+	{
+		"category": "Dairy and Alternatives",
+		"ingredients": [
+			{"name": "Buttermilk", "type": "liquid"},
+			{"name": "Condensed milk", "type": "liquid"},
+			{"name": "Cottage cheese", "type": "solid"},
+			{"name": "Cream cheese", "type": "solid"},
+			{"name": "Double cream", "type": "liquid"},
+			{"name": "Evaporated milk", "type": "liquid"},
+			{"name": "Goat milk", "type": "liquid"},
+			{"name": "Half-and-half", "type": "liquid"},
+			{"name": "Heavy cream", "type": "liquid"},
+			{"name": "Lactose-free milk", "type": "liquid"},
+			{"name": "Light cream", "type": "liquid"},
+			{"name": "Mascarpone cheese", "type": "solid"},
+			{"name": "Milk (skim, 1%, 2%, whole)", "type": "liquid"},
+			{"name": "Plant-based milk (ex: almond, coconut, oat, soy)", "type": "liquid"},
+			{"name": "Sour cream", "type": "liquid"},
+			{"name": "Yogurt (ex: plain, Greek, vanilla)", "type": "liquid"}
+		]
+	},
+	{
+		"category": "Dried fruits",
+		"ingredients": [
+			{"name": "Apricots", "type": "solid"},
+			{"name": "Blueberries", "type": "solid"},
+			{"name": "Candied citrus peel", "type": "solid"},
+			{"name": "Cherries", "type": "solid"},
+			{"name": "Cranberries", "type": "solid"},
+			{"name": "Dates", "type": "solid"},
+			{"name": "Figs", "type": "solid"},
+			{"name": "Goji berries", "type": "solid"},
+			{"name": "Prunes", "type": "solid"},
+			{"name": "Raisins", "type": "solid"},
+			{"name": "Shredded coconut", "type": "solid"}
+		]
+	},
+	{
+		"category": "Eggs and Substitutes",
+		"ingredients": [
+			{"name": "Chia seed egg", "type": "paste"},
+			{"name": "Egg replacer powder", "type": "powder"},
+			{"name": "Egg whites", "type": "liquid"},
+			{"name": "Egg yolks", "type": "liquid"},
+			{"name": "Flaxseed egg", "type": "paste"},
+			{"name": "Silken tofu", "type": "solid"},
+			{"name": "Whole eggs", "type": "liquid"}
+		]
+	},
+	{
+		"category": "Fats and Oils",
+		"ingredients": [
+			{"name": "Cooking oil (ex: avocado, coconut, olive, soybean) ", "type": "liquid"},
+			{"name": "Butter (unsalted or salted)", "type": "solid"},
+			{"name": "Ghee", "type": "solid"},
+			{"name": "Lard", "type": "solid"},
+			{"name": "Margarine", "type": "solid"},
+			{"name": "Shortening", "type": "solid"}
+		]
+	},
+	{
+		"category": "Extracts",
+		"ingredients": [
+			{"name": "Almond extract", "type": "liquid"},
+			{"name": "Anise extract", "type": "liquid"},
+			{"name": "Chocolate extract", "type": "liquid"},
+			{"name": "Coconut extract", "type": "liquid"},
+			{"name": "Coffee extract", "type": "liquid"},
+			{"name": "Lemon extract", "type": "liquid"},
+			{"name": "Maple extract", "type": "liquid"},
+			{"name": "Orange extract", "type": "liquid"},
+			{"name": "Peppermint extract", "type": "liquid"},
+			{"name": "Rum extract", "type": "liquid"},
+			{"name": "Vanilla extract", "type": "liquid"}
+		]
+	},
+	{
+		"category": "Flour and Starches",
+		"ingredients": [
+			{"name": "00 pizza flour", "type": "powder"},
+			{"name": "Almond flour", "type": "powder"},
+			{"name": "All-purpose flour", "type": "powder"},
+			{"name": "Arrowroot powder", "type": "powder"},
+			{"name": "Bread flour", "type": "powder"},
+			{"name": "Buckwheat flour", "type": "powder"},
+			{"name": "Cake flour", "type": "powder"},
+			{"name": "Cassava flour", "type": "powder"},
+			{"name": "Chickpea flour", "type": "powder"},
+			{"name": "Coconut flour", "type": "powder"},
+			{"name": "Cornmeal", "type": "granulated"},
+			{"name": "Cornstarch", "type": "powder"},
+			{"name": "Instant flour", "type": "powder"},
+			{"name": "Oat flour", "type": "powder"},
+			{"name": "Pastry flour", "type": "powder"},
+			{"name": "Potato starch", "type": "powder"},
+			{"name": "Rice flour", "type": "powder"},
+			{"name": "Rye flour", "type": "powder"},
+			{"name": "Self-rising flour", "type": "powder"},
+			{"name": "Tapioca flour", "type": "powder"},
+			{"name": "Whole wheat flour", "type": "powder"}
+		]
+	},
+	{
+		"category": "Leavening gents",
+		"ingredients": [
+			{"name": "Baking powder", "type": "powder"},
+			{"name": "Baking soda", "type": "powder"},
+			{"name": "Cream of tartar", "type": "powder"},
+			{"name": "Sourdough starter", "type": "liquid"},
+			{"name": "Yeast (active dry or instant)", "type": "granulated"}
+		]
+	},
+	{
+		"category": "Liquor, Drinks, and Water",
+		"ingredients": [
+			{"name": "Alcohol (ex: brandy, rum, wine)", "type": "liquid"},
+			{"name": "Brewed coffee", "type": "liquid"},
+			{"name": "Fruit juices (ex: apple, cranberry, orange)", "type": "liquid"},
+			{"name": "Tea (ex: Earl Gray, green tea, chai)", "type": "liquid"},
+			{"name": "Water", "type": "liquid"}
+		]
+	},
+	{
+		"category": "Nuts and Seeds",
+		"ingredients": [
+			{"name": "Almonds", "type": "solid"},
+			{"name": "Cashews", "type": "solid"},
+			{"name": "Chia seeds", "type": "granulated"},
+			{"name": "Flaxseeds", "type": "granulated"},
+			{"name": "Hemp seeds", "type": "granulated"},
+			{"name": "Macadamia nuts", "type": "solid"},
+			{"name": "Peanuts", "type": "solid"},
+			{"name": "Pecans", "type": "solid"},
+			{"name": "Pine nuts", "type": "solid"},
+			{"name": "Pistachios", "type": "solid"},
+			{"name": "Poppy seeds", "type": "granulated"},
+			{"name": "Pumpkin seeds", "type": "solid"},
+			{"name": "Sesame seeds", "type": "granulated"},
+			{"name": "Sunflower seeds", "type": "granulated"},
+			{"name": "Walnuts", "type": "solid"}
+		]
+	},
+	{
+		"category": "Thickeners",
+		"ingredients": [
+			{"name": "Agar-agar", "type": "powder"},
+			{"name": "Gelatin", "type": "powder"},
+			{"name": "Guar gum", "type": "powder"},
+			{"name": "Pectin", "type": "powder"},
+			{"name": "Xanthan gum", "type": "powder"}
+		]
+	},
+	{
+		"category": "Spices and Flavors",
+		"ingredients": [
+			{"name": "Allspice", "type": "powder"},
+			{"name": "Black pepper", "type": "powder"},
+			{"name": "Cardamom (ground)", "type": "powder"},
+			{"name": "Cinnamon (ground)", "type": "powder"},
+			{"name": "Clove (ground)", "type": "solid"},
+			{"name": "Dried herbs", "type": "powder"},
+			{"name": "Espresso powder", "type": "powder"},
+			{"name": "Garlic powder", "type": "powder"},
+			{"name": "Ginger (ground)", "type": "powder"},
+			{"name": "Mace", "type": "powder"},
+			{"name": "Nutmeg", "type": "powder"},
+			{"name": "Onion powder", "type": "powder"},
+			{"name": "Salt (ex: kosher, pink Himalayan, sea, table)", "type": "powder"},
+			{"name": "Star anise", "type": "solid"}
+		]
+	},
+	{
+		"category": "Sweeteners",
+		"ingredients": [
+			{"name": "Syrup (ex: agave, maple, simple)", "type": "liquid"},
+			{"name": "Brown sugar (light or dark)", "type": "granulated"},
+			{"name": "Cane sugar", "type": "granulated"},
+			{"name": "Caster sugar", "type": "granulated"},
+			{"name": "Coconut sugar", "type": "granulated"},
+			{"name": "Confectioners (icing, powdered) sugar", "type": "granulated"},
+			{"name": "Date sugar", "type": "granulated"},
+			{"name": "Granulated sugar", "type": "granulated"},
+			{"name": "Honey", "type": "liquid"},
+			{"name": "Molasses", "type": "liquid"},
+			{"name": "Muscovado sugar", "type": "granulated"},
+			{"name": "Raw sugar", "type": "granulated"},
+			{"name": "Sweeteners (ex: aspartame, monk fruit, stevia)", "type": "granulated"}
+		]
+	}
+]
