@@ -185,7 +185,7 @@
 		]
 	},
 	{
-		"category": "Sweeteners",
+		"category": "Sugars",
 		"ingredients": [
 			{"name": "Syrup (ex: agave, maple, simple)", "type": "liquid"},
 			{"name": "Brown sugar (light or dark)", "type": "granulated"},

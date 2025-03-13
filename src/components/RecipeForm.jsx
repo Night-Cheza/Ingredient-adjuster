@@ -3,12 +3,12 @@ import { fetchCategoryList, fetchIngredientByCategory, fetchUnitList } from "../
 
 import "./RecipeForm.css"
 
-const RecipeForm = ({ onAddIngredient }) => {
-	const [ ingredient, setIngredient ] = useState( {name: "", amount: "", unit: ""} );
+const RecipeForm = ({ onAddIngredient, duplicate }) => {
+	const [ ingredient, setIngredient ] = useState( {category: "", name: "", amount: "", unit: ""} );
 	const [ ingredientList, setIngredientList ] = useState( [] );
 	const [ categoryList, setCategoryList ] = useState( [] );
-	const [ selectedCategory, setSelectedCategory ] = useState("");;
 	const [ unitList, setUnitList ] = useState( [] );
+	const [ errors, setErrors ] = useState( {category: false, name: false, amount: false, unit: false, general: false} );
 
 	useEffect(() => {
 		const loadedCategory = fetchCategoryList();
@@ -18,22 +18,57 @@ const RecipeForm = ({ onAddIngredient }) => {
 }, []);
 
 	const handleCategoryChange = ( e ) => {
-		const category = e.target.value;
-		setSelectedCategory( category );
-		const ingredientsByCategory = fetchIngredientByCategory( category );
+		const selectedCategory = e.target.value;
+		setIngredient( {category: selectedCategory} );
+		const ingredientsByCategory = fetchIngredientByCategory( selectedCategory );
 		setIngredientList( ingredientsByCategory );
-
 	}
 
 	const handleSubmit = ( e ) => {
 		e.preventDefault();
+
+		let newErrors = {category: false, name: false, amount: false, unit: false, general: false};
+		let missingFields = [];
+
+
+		if (!ingredient.category) {
+			newErrors.category = true;
+			newErrors.name = true;
+			console.log(ingredient.name.length)
+			missingFields.push( true );
+		}
+
+		if (!ingredient.name || ingredient.name.length === 0) {
+			newErrors.name = true;
+			missingFields.push( true );
+		}
+		if (!ingredient.amount || isNaN(ingredient.amount) || ingredient.amount <= 0) {
+			newErrors.amount = true;
+			missingFields.push( true );
+		}
+		if (!ingredient.unit) {
+			newErrors.unit = true;
+			missingFields.push( true );
+		}
+
+		if (missingFields.length > 1) {
+			newErrors.general = true;
+		}
+
+		setErrors(newErrors );
+		console.log( errors );
+
+		if( missingFields.length > 0 ) {
+			return;
+		}
+
 		onAddIngredient( {
 			...ingredient,
 			name: ingredient.name,
+			amount: ingredient.amount,
 			unit: ingredient.unit,
 		} );
-		setIngredient( {name: "", amount: "", unit: ""} );
-		setSelectedCategory( "" );
+		setIngredient( {category: "", name: "", amount: "", unit: ""} );
 		setIngredientList( [] );
 	};
 
@@ -41,10 +76,10 @@ const RecipeForm = ({ onAddIngredient }) => {
 		<div>
 			<h2>Add Ingredients</h2>
 			<form onSubmit={handleSubmit}>
-				{/* <div className="error-message">{( error.amount || error.unit || error.name || error.duplicate ) && <>{errorMessage}</>}</div> */}
+				<div className="error-message">{duplicate ? "The ingredient is already on the list" : (errors.category || errors.igredient || errors.amount || errors.unit || errors.general) ? "Please fill missing fields" : ""}</div>
 				<select
-					// className={error.category ? "input-error" : ""}
-					value={selectedCategory}
+					className={errors.category ? "input-error" : ""}
+					value={ingredient.category}
 					onChange={handleCategoryChange}
 				>
 					<option value="">Select category</option>
@@ -55,9 +90,9 @@ const RecipeForm = ({ onAddIngredient }) => {
 					))}
 				</select>
 				<select
-					// className={error.name ? "input-error" : ""}
+					className={errors.name ? "input-error" : ""}
 					value={ingredient.name}
-					onChange={( e ) => setIngredient( {name: e.target.value} )}
+					onChange={( e ) => setIngredient( {...ingredient, name: e.target.value} )}
 				>
 					<option value="">Select ingredient</option>
 					{ingredientList.map((ingredient, index) => (
@@ -67,14 +102,14 @@ const RecipeForm = ({ onAddIngredient }) => {
 					))}
 				</select>
 				<input
-					// className={error.amount ? "input-error" : ""}
+					className={errors.amount ? "input-error" : ""}
 					type="number"
 					placeholder="Amount"
 					value={ingredient.amount}
 					onChange={( e ) => setIngredient( {...ingredient, amount: e.target.value} )}
 				/>
 				<select
-					// className={error.amount ? "input-error" : ""}
+					className={errors.unit ? "input-error" : ""}
 					value={ingredient.unit}
 					onChange={( e ) => setIngredient( {...ingredient, unit: e.target.value} )}>
 					<option value="">Select measurement</option>
