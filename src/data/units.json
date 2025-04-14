@@ -1,82 +1,102 @@
 [
 	{
 		"unit": "Cup (Imperial)",
-		"abrr": "cup"
+		"abrr": "cup",
+		"volume": "284"
 	},
 	{
 		"unit": "Cup (Metric)",
-		"abrr": "cup"
+		"abrr": "cup",
+		"volume": "250"
 	},
 	{
 		"unit": "Cup (US)",
-		"abrr": "cup"
+		"abrr": "cup",
+		"volume": "237"
 	},
 	{
 		"unit": "Fluid ounce (Imperial)",
-		"abrr": "oz"
+		"abrr": "oz",
+		"volume": "28.41"
 	},
 	{
 		"unit": "Fluid ounce (US)",
-		"abrr": "ml"
+		"abrr": "oz",
+		"volume": "29.57"
 	},
 	{
 		"unit": "Gallon",
-		"abrr": "gal"
+		"abrr": "gal",
+		"volume": "3785.41"
 	},
 	{
 		"unit": "Gram",
-		"abrr": "g"
+		"abrr": "g",
+		"weight": "1"
 	},
 	{
 		"unit": "Kilogram",
-		"abrr": "kg"
+		"abrr": "kg",
+		"weight": "1000"
 	},
 	{
-		"unit": "Litre",
-		"abrr": "l"
+		"unit": "Liter",
+		"abrr": "l",
+		"volume": "1000"
 	},
 	{
 		"unit": "Milliliter",
-		"abrr": "ml"
+		"abrr": "ml",
+		"volume": "1"
 	},
 	{
 		"unit": "Ounce",
-		"abrr": "oz"
+		"abrr": "oz",
+		"weight": "28.35"
 	},
 	{
 		"unit": "Pint (Imperial)",
-		"abrr": "pt"
+		"abrr": "pt",
+		"volume": "568.26"
 	},
 	{
 		"unit": "Pint (US)",
-		"abrr": "pt"
+		"abrr": "pt",
+		"volume": "473.18"
 	},
 	{
 		"unit": "Pound",
-		"abrr": "lb"
+		"abrr": "lb",
+		"weight": "453.59"
 	},
 	{
 		"unit": "Quart (Imperial)",
-		"abrr": "qt"
+		"abrr": "qt",
+		"volume": "1136.52"
 	},
 	{
 		"unit": "Quart (US)",
-		"abrr": "qt"
+		"abrr": "qt",
+		"volume": "946.35"
 	},
 	{
 		"unit": "Tablespoon",
-		"abrr": "tbsp"
+		"abrr": "tbsp",
+		"volume": "15"
 	},
 	{
 		"unit": "Tablespoon (Imperial)",
-		"abrr": "tbsp"
+		"abrr": "tbsp",
+		"volume": "17.76"
 	},
 	{
 		"unit": "Teaspoon",
-		"abrr": "tsp"
+		"abrr": "tsp",
+		"volume": "5"
 	},
 	{
 		"unit": "Teaspoon (Imperial)",
-		"abrr": "tsp"
+		"abrr": "tsp",
+		"volume": "5.92"
 	}
 ]
