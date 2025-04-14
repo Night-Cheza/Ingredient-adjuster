@@ -2,15 +2,59 @@
 	{
 		"category": "Chocolate and Cocoa",
 		"ingredients": [
-			{"name": "Bittersweet chocolate", "type": "solid"},
-			{"name": "Chocolate chips", "type": "powder"},
-			{"name": "Cocoa nibs", "type": "solid"},
-			{"name": "Cocoa powder", "type": "powder"},
-			{"name": "Dark chocolate", "type": "solid"},
-			{"name": "Milk chocolate", "type": "solid"},
-			{"name": "Semi-sweet chocolate", "type": "solid"},
-			{"name": "Unsweetened chocolate", "type": "solid"},
-			{"name": "White chocolate", "type": "solid"}
+			{"name": "Bittersweet chocolate",
+			 "type": "solid",
+			 "g_per_cup_metric": 274.61,
+			 "g_per_tablespoon": 16.48
+			},
+			{
+				"name": "Chocolate chips",
+				"type": "solid",
+				"g_per_cup_metric": 253.61,
+				"g_per_tablespoon": 15.22
+			},
+			{
+				"name": "Cocoa nibs",
+				"type": "solid",
+				"g_per_cup_metric": 118.35,
+				"g_per_tablespoon": 7.1
+			},
+			{
+				"name": "Cocoa powder",
+				"type": "powder",
+				"g_per_cup_metric": 85,
+				"g_per_tablespoon": 5.25
+			},
+			{
+				"name": "Dark chocolate",
+				"type": "solid",
+				"g_per_cup_metric": 274.61,
+				"g_per_tablespoon": 16.48
+			},
+			{
+				"name": "Milk chocolate",
+				"type": "solid",
+				"g_per_cup_metric": 274.61,
+				"g_per_tablespoon": 16.48
+			},
+			{
+				"name": "Semi-sweet chocolate",
+				"type": "solid",
+				"g_per_cup_metric": 274.61,
+				"g_per_tablespoon": 16.48
+			},
+			{
+				"name": "Unsweetened chocolate",
+				"type": "solid",
+				"g_per_cup_metric": 274.61,
+				"g_per_tablespoon": 16.48
+			},
+			{
+				"name": "White chocolate",
+				"type": "solid",
+				"g_per_cup_metric": 274.61,
+				"g_per_tablespoon": 16.48
+			}
 		]
 	},
 	{
@@ -18,8 +62,18 @@
 		"ingredients": [
 			{"name": "Buttermilk", "type": "liquid"},
 			{"name": "Condensed milk", "type": "liquid"},
-			{"name": "Cottage cheese", "type": "solid"},
-			{"name": "Cream cheese", "type": "solid"},
+			{
+				"name": "Cottage cheese",
+				"type": "solid",
+				"g_per_cup_metric": 238.81,
+				"g_per_tablespoon": 14.33
+			},
+			{
+				"name": "Cream cheese",
+				"type": "solid",
+				"g_per_cup_metric": 245.15,
+				"g_per_tablespoon": 14.71
+			},
 			{"name": "Double cream", "type": "liquid"},
 			{"name": "Evaporated milk", "type": "liquid"},
 			{"name": "Goat milk", "type": "liquid"},
@@ -27,7 +81,12 @@
 			{"name": "Heavy cream", "type": "liquid"},
 			{"name": "Lactose-free milk", "type": "liquid"},
 			{"name": "Light cream", "type": "liquid"},
-			{"name": "Mascarpone cheese", "type": "solid"},
+			{
+				"name": "Mascarpone cheese",
+				"type": "solid",
+				"g_per_cup_metric": 236.7,
+				"g_per_tablespoon": 14.2
+			},
 			{"name": "Milk (skim, 1%, 2%, whole)", "type": "liquid"},
 			{"name": "Plant-based milk (ex: almond, coconut, oat, soy)", "type": "liquid"},
 			{"name": "Sour cream", "type": "liquid"},
@@ -35,42 +94,156 @@
 		]
 	},
 	{
-		"category": "Dried fruits",
+		"category": "Fruits",
 		"ingredients": [
-			{"name": "Apricots", "type": "solid"},
-			{"name": "Blueberries", "type": "solid"},
-			{"name": "Candied citrus peel", "type": "solid"},
-			{"name": "Cherries", "type": "solid"},
-			{"name": "Cranberries", "type": "solid"},
-			{"name": "Dates", "type": "solid"},
-			{"name": "Figs", "type": "solid"},
-			{"name": "Goji berries", "type": "solid"},
-			{"name": "Prunes", "type": "solid"},
-			{"name": "Raisins", "type": "solid"},
-			{"name": "Shredded coconut", "type": "solid"}
+			{
+				"name": "Apricots (dried)",
+				"type": "solid",
+				"g_per_cup_metric": 125.75,
+				"g_per_tablespoon": 7.54
+			},
+			{
+				"name": "Blueberries (dried)",
+				"type": "solid",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Blueberries (fresh)",
+				"type": "solid",
+				"g_per_cup_metric": 156.39,
+				"g_per_tablespoon": 9.38
+			},
+			{
+				"name": "Citrus peel (fresh)",
+				"type": "solid",
+				"g_per_cup_metric": 101.44,
+				"g_per_tablespoon": 6.09
+			},
+			{
+				"name": "Cherries (dried)",
+				"type": "solid",
+				"g_per_cup_metric": 127.86,
+				"g_per_tablespoon": 7.67
+			},
+			{
+				"name": "Cherries (fresh)",
+				"type": "solid",
+				"g_per_cup_metric": 162.73,
+				"g_per_tablespoon": 9.76
+			},
+			{
+				"name": "Cherries (frozen)",
+				"type": "solid",
+				"g_per_cup_metric": 163.79,
+				"g_per_tablespoon": 9.83
+			},
+			{
+				"name": "Cranberries (dried)",
+				"type": "solid",
+				"g_per_cup_metric": 116.24,
+				"g_per_tablespoon": 6.97
+			},
+			{
+				"name": "Cranberries (fresh)",
+				"type": "solid",
+				"g_per_cup_metric": 105.67,
+				"g_per_tablespoon": 6.34
+			},
+			{
+				"name": "Dates",
+				"type": "solid",
+				"g_per_cup_metric": 155.33,
+				"g_per_tablespoon": 9.32
+			},
+			{
+				"name": "Figs (dried)",
+				"type": "solid",
+				"g_per_cup_metric": 157.45,
+				"g_per_tablespoon": 9.45
+			},
+			{
+				"name": "Goji berries (dried)",
+				"type": "solid",
+				"g_per_cup_metric": 94.68,
+				"g_per_tablespoon": 5.68
+			},
+			{
+				"name": "Prunes",
+				"type": "solid",
+				"g_per_cup_metric": 183.86,
+				"g_per_tablespoon": 11.03
+			},
+			{
+				"name": "Raisins",
+				"type": "solid",
+				"g_per_cup_metric": 153.22,
+				"g_per_tablespoon": 9.19
+			},
+			{
+				"name": "Shredded coconut",
+				"type": "solid",
+				"g_per_cup_metric": 98.27,
+				"g_per_tablespoon": 5.9
+			}
 		]
 	},
 	{
 		"category": "Eggs and Substitutes",
 		"ingredients": [
-			{"name": "Chia seed egg", "type": "paste"},
-			{"name": "Egg replacer powder", "type": "powder"},
+			{"name": "Chia seed egg", "type": "piece"},
+			{
+				"name": "Egg replacer powder",
+				"type": "powder",
+				"g_per_cup_metric": 169.07,
+				"g_per_tablespoon": 10
+			},
 			{"name": "Egg whites", "type": "liquid"},
 			{"name": "Egg yolks", "type": "liquid"},
-			{"name": "Flaxseed egg", "type": "paste"},
-			{"name": "Silken tofu", "type": "solid"},
-			{"name": "Whole eggs", "type": "liquid"}
+			{"name": "Flaxseed egg", "type": "piece"},
+			{
+				"name": "Silken tofu",
+				"type": "solid",
+				"g_per_cup_metric": 274.61,
+				"g_per_tablespoon": 16.48
+			},
+			{"name": "Whole egg", "type": "piece"}
 		]
 	},
 	{
 		"category": "Fats and Oils",
 		"ingredients": [
 			{"name": "Cooking oil (ex: avocado, coconut, olive, soybean) ", "type": "liquid"},
-			{"name": "Butter (unsalted or salted)", "type": "solid"},
-			{"name": "Ghee", "type": "solid"},
-			{"name": "Lard", "type": "solid"},
-			{"name": "Margarine", "type": "solid"},
-			{"name": "Shortening", "type": "solid"}
+			{
+				"name": "Butter (unsalted or salted)",
+				"type": "solid",
+				"g_per_cup_metric": 227,
+				"g_per_tablespoon": 14.2
+			},
+			{
+				"name": "Ghee",
+				"type": "solid",
+				"g_per_cup_metric": 216.62,
+				"g_per_tablespoon": 13
+			},
+			{
+				"name": "Lard",
+				"type": "solid",
+				"g_per_cup_metric": 216.62,
+				"g_per_tablespoon": 13
+			},
+			{
+				"name": "Margarine",
+				"type": "solid",
+				"g_per_cup_metric": 239.87,
+				"g_per_tablespoon": 14.39
+			},
+			{
+				"name": "Shortening",
+				"type": "solid",
+				"g_per_cup_metric": 216.62,
+				"g_per_tablespoon": 13
+			}
 		]
 	},
 	{
@@ -92,37 +265,167 @@
 	{
 		"category": "Flour and Starches",
 		"ingredients": [
-			{"name": "00 pizza flour", "type": "powder"},
-			{"name": "Almond flour", "type": "powder"},
-			{"name": "All-purpose flour", "type": "powder"},
-			{"name": "Arrowroot powder", "type": "powder"},
-			{"name": "Bread flour", "type": "powder"},
-			{"name": "Buckwheat flour", "type": "powder"},
-			{"name": "Cake flour", "type": "powder"},
-			{"name": "Cassava flour", "type": "powder"},
-			{"name": "Chickpea flour", "type": "powder"},
-			{"name": "Coconut flour", "type": "powder"},
-			{"name": "Cornmeal", "type": "granulated"},
-			{"name": "Cornstarch", "type": "powder"},
-			{"name": "Instant flour", "type": "powder"},
-			{"name": "Oat flour", "type": "powder"},
-			{"name": "Pastry flour", "type": "powder"},
-			{"name": "Potato starch", "type": "powder"},
-			{"name": "Rice flour", "type": "powder"},
-			{"name": "Rye flour", "type": "powder"},
-			{"name": "Self-rising flour", "type": "powder"},
-			{"name": "Tapioca flour", "type": "powder"},
-			{"name": "Whole wheat flour", "type": "powder"}
+			{
+				"name": "00 pizza flour",
+				"type": "powder",
+				"g_per_cup_metric": 121.0,
+				"g_per_tablespoon": 7.5
+			},
+			{
+				"name": "Almond flour (blanched)",
+				"type": "powder",
+				"g_per_cup_metric": 118.35,
+				"g_per_tablespoon": 7.1
+			},
+			{
+				"name": "All-purpose flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Arrowroot flour",
+				"type": "powder",
+				"g_per_cup_metric": 135.26,
+				"g_per_tablespoon": 8.12
+			},
+			{
+				"name": "Bread flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Buckwheat flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Cake flour",
+				"type": "powder",
+				"g_per_cup_metric": 119.0,
+				"g_per_tablespoon": 7.2
+			},
+			{
+				"name": "Cassava flour",
+				"type": "powder",
+				"g_per_cup_metric": 147.94,
+				"g_per_tablespoon": 8.88
+			},
+			{
+				"name": "Chickpea flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Coconut flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Cornmeal",
+				"type": "granulated",
+				"g_per_cup_metric": 177.52,
+				"g_per_tablespoon": 10.65
+			},
+			{
+				"name": "Cornstarch",
+				"type": "powder",
+				"g_per_cup_metric": 135.26,
+				"g_per_tablespoon": 8.12
+			},
+			{
+				"name": "Instant flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Oat flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Pastry flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Potato starch",
+				"type": "powder",
+				"g_per_cup_metric": 202.88,
+				"g_per_tablespoon": 12.17
+			},
+			{
+				"name": "Rice flour",
+				"type": "powder",
+				"g_per_cup_metric": 169.07,
+				"g_per_tablespoon": 10.14
+			},
+			{
+				"name": "Rice flour (brown)",
+				"type": "powder",
+				"g_per_cup_metric": 147.94,
+				"g_per_tablespoon": 8.88
+			},
+			{
+				"name": "Rye flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Self-rising flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Tapioca flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Whole wheat flour",
+				"type": "powder",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			}
 		]
 	},
 	{
 		"category": "Leavening gents",
 		"ingredients": [
-			{"name": "Baking powder", "type": "powder"},
-			{"name": "Baking soda", "type": "powder"},
-			{"name": "Cream of tartar", "type": "powder"},
-			{"name": "Sourdough starter", "type": "liquid"},
-			{"name": "Yeast (active dry or instant)", "type": "granulated"}
+			{
+				"name": "Baking powder",
+				"type": "powder",
+				"g_per_cup_metric": 243.46,
+				"g_per_tablespoon": 14.61
+			},
+			{
+				"name": "Baking soda",
+				"type": "powder",
+				"g_per_cup_metric": 243.46,
+				"g_per_tablespoon": 14.61
+			},
+			{
+				"name": "Cream of tartar",
+				"type": "powder",
+				"g_per_cup_metric": 152.16,
+				"g_per_tablespoon": 9.13
+			},
+			{
+				"name": "Yeast (active dry or instant)",
+				"type": "granulated",
+				"g_per_cup_metric": 169.07,
+				"g_per_tablespoon": 10.14
+			}
 		]
 	},
 	{
@@ -138,68 +441,288 @@
 	{
 		"category": "Nuts and Seeds",
 		"ingredients": [
-			{"name": "Almonds", "type": "solid"},
-			{"name": "Cashews", "type": "solid"},
-			{"name": "Chia seeds", "type": "granulated"},
-			{"name": "Flaxseeds", "type": "granulated"},
-			{"name": "Hemp seeds", "type": "granulated"},
-			{"name": "Macadamia nuts", "type": "solid"},
-			{"name": "Peanuts", "type": "solid"},
-			{"name": "Pecans", "type": "solid"},
-			{"name": "Pine nuts", "type": "solid"},
-			{"name": "Pistachios", "type": "solid"},
-			{"name": "Poppy seeds", "type": "granulated"},
-			{"name": "Pumpkin seeds", "type": "solid"},
-			{"name": "Sesame seeds", "type": "granulated"},
-			{"name": "Sunflower seeds", "type": "granulated"},
-			{"name": "Walnuts", "type": "solid"}
+			{
+				"name": "Almonds (raw)",
+				"type": "solid",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Cashews (raw)",
+				"type": "solid",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Chia seeds",
+				"type": "granulated",
+				"g_per_cup_metric": 219.79,
+				"g_per_tablespoon": 13.19
+			},
+			{
+				"name": "Flax seeds",
+				"type": "granulated",
+				"g_per_cup_metric": 177.52,
+				"g_per_tablespoon": 10.65
+			},
+			{
+				"name": "Flaxseed (ground)",
+				"type": "granulated",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Hemp hearts",
+				"type": "granulated",
+				"g_per_cup_metric": 169.07,
+				"g_per_tablespoon": 10.14
+			},
+			{
+				"name": "Macadamia nuts (dry roasted)",
+				"type": "solid",
+				"g_per_cup_metric": 139.48,
+				"g_per_tablespoon": 8.37
+			},
+			{
+				"name": "Peanuts (raw)",
+				"type": "solid",
+				"g_per_cup_metric": 154.28,
+				"g_per_tablespoon": 9.26
+			},
+			{
+				"name": "Pecans (halves)",
+				"type": "solid",
+				"g_per_cup_metric": 104.61,
+				"g_per_tablespoon": 6.28
+			},
+			{
+				"name": "Pine nuts",
+				"type": "solid",
+				"g_per_cup_metric": 118.35,
+				"g_per_tablespoon": 7.1
+			},
+			{
+				"name": "Pistachios (raw, shelled)",
+				"type": "solid",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Poppy seeds",
+				"type": "granulated",
+				"g_per_cup_metric": 163.43,
+				"g_per_tablespoon": 9.81
+			},
+			{
+				"name": "Pumpkin seeds (raw)",
+				"type": "solid",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Sesame seeds",
+				"type": "granulated",
+				"g_per_cup_metric": 152.16,
+				"g_per_tablespoon": 9.13
+			},
+			{
+				"name": "Sunflower seeds (raw, shelled)",
+				"type": "granulated",
+				"g_per_cup_metric": 118.35,
+				"g_per_tablespoon": 7.1
+			},
+			{
+				"name": "Walnuts (halves)",
+				"type": "solid",
+				"g_per_cup_metric": 105.67,
+				"g_per_tablespoon": 6.34
+			}
 		]
 	},
 	{
 		"category": "Thickeners",
 		"ingredients": [
-			{"name": "Agar-agar", "type": "powder"},
-			{"name": "Gelatin", "type": "powder"},
-			{"name": "Guar gum", "type": "powder"},
-			{"name": "Pectin", "type": "powder"},
-			{"name": "Xanthan gum", "type": "powder"}
+			{
+				"name": "Agar-agar (powder)",
+				"type": "powder",
+				"g_per_cup_metric": 202.88,
+				"g_per_tablespoon": 12.17
+			},
+			{
+				"name": "Gelatin",
+				"type": "powder",
+				"g_per_cup_metric": 180,
+				"g_per_tablespoon": 10.8
+			},
+			{
+				"name": "Guar gum",
+				"type": "powder",
+				"g_per_cup_metric": 169.07,
+				"g_per_tablespoon": 10.14
+			},
+			{
+				"name": "Pectin",
+				"type": "powder",
+				"g_per_cup_metric": 142.02,
+				"g_per_tablespoon": 8.52
+			},
+			{
+				"name": "Xanthan gum",
+				"type": "powder",
+				"g_per_cup_metric": 152.16,
+				"g_per_tablespoon": 9.13
+			}
 		]
 	},
 	{
 		"category": "Spices and Flavors",
 		"ingredients": [
-			{"name": "Allspice", "type": "powder"},
-			{"name": "Black pepper", "type": "powder"},
-			{"name": "Cardamom (ground)", "type": "powder"},
-			{"name": "Cinnamon (ground)", "type": "powder"},
-			{"name": "Clove (ground)", "type": "solid"},
-			{"name": "Dried herbs", "type": "powder"},
-			{"name": "Espresso powder", "type": "powder"},
-			{"name": "Garlic powder", "type": "powder"},
-			{"name": "Ginger (ground)", "type": "powder"},
-			{"name": "Mace", "type": "powder"},
-			{"name": "Nutmeg", "type": "powder"},
-			{"name": "Onion powder", "type": "powder"},
-			{"name": "Salt (ex: kosher, pink Himalayan, sea, table)", "type": "powder"},
-			{"name": "Star anise", "type": "solid"}
+			{
+				"name": "Allspice (ground)",
+				"type": "powder",
+				"g_per_cup_metric": 101.44,
+				"g_per_tablespoon": 6.09
+			},
+			{
+				"name": "Black pepper (ground)",
+				"type": "powder",
+				"g_per_cup_metric": 116.66,
+				"g_per_tablespoon": 7
+			},
+			{
+				"name": "Cardamom (ground)",
+				"type": "powder",
+				"g_per_cup_metric": 98.06,
+				"g_per_tablespoon": 5.88
+			},
+			{
+				"name": "Cinnamon (ground)",
+				"type": "powder",
+				"g_per_cup_metric": 131.87,
+				"g_per_tablespoon": 7.91
+			},
+			{
+				"name": "Clove (ground)",
+				"type": "solid",
+				"g_per_cup_metric": 109.9,
+				"g_per_tablespoon": 6.59
+			},
+			{
+				"name": "Espresso powder",
+				"type": "powder",
+				"g_per_cup_metric": 101.44,
+				"g_per_tablespoon": 6.09
+			},
+			{
+				"name": "Garlic powder",
+				"type": "powder",
+				"g_per_cup_metric": 164,
+				"g_per_tablespoon": 9.84
+			},
+			{
+				"name": "Ginger (ground)",
+				"type": "powder",
+				"g_per_cup_metric": 87.92,
+				"g_per_tablespoon": 5.27
+			},
+			{
+				"name": "Mace (ground)",
+				"type": "powder",
+				"g_per_cup_metric": 89.61,
+				"g_per_tablespoon": 5.38
+			},
+			{
+				"name": "Mustard seed (ground)",
+				"type": "powder",
+				"g_per_cup_metric": 106.51,
+				"g_per_tablespoon": 6.39
+			},
+			{
+				"name": "Nutmeg",
+				"type": "powder",
+				"g_per_cup_metric": 118.35,
+				"g_per_tablespoon": 7.12
+			},
+			{
+				"name": "Onion powder",
+				"type": "powder",
+				"g_per_cup_metric": 116.66,
+				"g_per_tablespoon": 7
+			},
+			{
+				"name": "Salt (ex: kosher, pink Himalayan, sea, table)",
+				"type": "powder",
+				"g_per_cup_metric": 300.0,
+				"g_per_tablespoon": 18.0
+			},
+			{
+				"name": "Star anise",
+				"type": "solid",
+				"g_per_cup_metric": 152.32,
+				"g_per_tablespoon": 9.14
+			}
 		]
 	},
 	{
 		"category": "Sugars",
 		"ingredients": [
 			{"name": "Syrup (ex: agave, maple, simple)", "type": "liquid"},
-			{"name": "Brown sugar (light or dark)", "type": "granulated"},
-			{"name": "Cane sugar", "type": "granulated"},
-			{"name": "Caster sugar", "type": "granulated"},
-			{"name": "Coconut sugar", "type": "granulated"},
-			{"name": "Confectioners (icing, powdered) sugar", "type": "granulated"},
-			{"name": "Date sugar", "type": "granulated"},
-			{"name": "Granulated sugar", "type": "granulated"},
+			{
+				"name": "Brown sugar (light or dark)",
+				"type": "granulated",
+				"g_per_cup_metric": 232.47,
+				"g_per_tablespoon": 13.95
+			},
+			{
+				"name": "Cane sugar",
+				"type": "granulated",
+				"g_per_cup_metric": 202.88,
+				"g_per_tablespoon": 12.17
+			},
+			{
+				"name": "Caster sugar (superfine)",
+				"type": "granulated",
+				"g_per_cup_metric": 202.88,
+				"g_per_tablespoon": 12.17
+			},
+			{
+				"name": "Coconut sugar",
+				"type": "granulated",
+				"g_per_cup_metric": 202.88,
+				"g_per_tablespoon": 12.17
+			},
+			{
+				"name": "Confectioners (icing, powdered) sugar",
+				"type": "granulated",
+				"g_per_cup_metric": 126.8,
+				"g_per_tablespoon": 7.61
+			},
+			{
+				"name": "Date sugar",
+				"type": "granulated",
+				"g_per_cup_metric": 152.16,
+				"g_per_tablespoon": 9.13
+			},
+			{
+				"name": "Granulated sugar",
+				"type": "granulated",
+				"g_per_cup_metric": 211.34,
+				"g_per_tablespoon": 12.68
+			},
 			{"name": "Honey", "type": "liquid"},
 			{"name": "Molasses", "type": "liquid"},
-			{"name": "Muscovado sugar", "type": "granulated"},
-			{"name": "Raw sugar", "type": "granulated"},
-			{"name": "Sweeteners (ex: aspartame, monk fruit, stevia)", "type": "granulated"}
+			{
+				"name": "Raw sugar",
+				"type": "granulated",
+				"g_per_cup_metric": 206.05,
+				"g_per_tablespoon": 12.36
+			},
+			{
+				"name": "Sugar substitute (powder)",
+				"type": "granulated",
+				"g_per_cup_metric": 152.16,
+				"g_per_tablespoon": 9.13
+			}
 		]
 	}
 ]
