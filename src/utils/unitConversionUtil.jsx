@@ -22,11 +22,6 @@ export const convertMeasurements = ( ingredientName, amount, fromUnit) => {
 	if (!amount || isNaN(amount) || amount <= 0 || !fromUnit || !ingredientName) {
 		return { convertedAmount: null, convertedUnit: null };
 	}
-	// Not to convert milliliters and grams
-	if( fromUnit === "Milliliter" || fromUnit === "Gram" ) {
-		convertedAmount = amount;
-		convertedUnit = fromUnit;
-	}
 
 	const isFixedValue = FIXEDVALUES.find(value => value.key === fromUnit);
 	// Convert using fixed values
@@ -106,6 +101,7 @@ const ingredient = solidData
 					break;
 				default:
 					convertedAmount = amount;
+					convertedUnit = fromUnit;
 			}
 		}
 
