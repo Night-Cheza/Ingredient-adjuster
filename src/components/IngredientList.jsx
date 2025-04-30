@@ -28,12 +28,13 @@ const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isR
 			{/*conditionally displaying header*/}
 			{ingredients.length > 0 && <h2>Recipe Ingredients</h2>}
 
-			<ul>
+			<ul className="list">
 				{ingredients.map((ingredient, index) => (
 					<li key={index}>
 						{ingredient.name}: {ingredient.amount} {ingredient.unit}
+						<button className="adjust">Delete</button>
 						{ingredients.length > 1 && !ingredientToAdjust && !isRecalculated && (
-							<button className="adjust" onClick={() => handleAdjust(ingredient)}>Adjust</button>
+							<button className="adjust" onClick={() => handleAdjust( ingredient )}>Adjust</button>
 						)}
 					</li>
 				))}

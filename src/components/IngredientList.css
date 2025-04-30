@@ -12,3 +12,7 @@
 	height: 1.9rem;
 	float: right;
 }
+
+.list {
+	max-width: 30rem
+}
