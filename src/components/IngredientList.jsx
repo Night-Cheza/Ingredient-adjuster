@@ -3,24 +3,24 @@ import {useState} from "react";
 import "./IngredientList.css"
 
 const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isRecalculated, onCancel }) => {
-	const [adjustedIngredient, setAdjustedIngredient] = useState(null);
+	const [ingredientToAdjust, setingredientToAdjust] = useState(null);
 	const [newAmount, setNewAmount] = useState("");
 
 	const handleAdjust = (ingredient) => {
-		setAdjustedIngredient(ingredient);
+		setingredientToAdjust(ingredient);
 		onAdjust();
 	};
 
 	const handleCancel = () => {
-		setAdjustedIngredient( null );
+		setingredientToAdjust(null);
 		onAdjust();
 		onCancel();
 	};
 
 	const handleRecalculate = () => {
 		if (!newAmount || newAmount <= 0) return;
-		onRecalculate(adjustedIngredient, parseFloat(newAmount));
-		setAdjustedIngredient(null);
+		onRecalculate(ingredientToAdjust, parseFloat(newAmount));
+		setingredientToAdjust(null);
 	};
 
 	return (
@@ -32,7 +32,7 @@ const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isR
 				{ingredients.map((ingredient, index) => (
 					<li key={index}>
 						{ingredient.name}: {ingredient.amount} {ingredient.unit}
-						{ingredients.length > 1 && !adjustedIngredient && !isRecalculated && (
+						{ingredients.length > 1 && !ingredientToAdjust && !isRecalculated && (
 							<button className="btn" onClick={() => handleAdjust(ingredient)}>Adjust</button>
 						)}
 					</li>
@@ -40,13 +40,13 @@ const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isR
 			</ul>
 
 			{/*conditionally displaying form*/}
-			{isAdjusting && adjustedIngredient && (
+			{isAdjusting && ingredientToAdjust && (
 				<>
-					<h3>Adjust {adjustedIngredient.name}</h3>
+					<h3>New {ingredientToAdjust.name} amount</h3>
 					<div className="newValue">
 						<input
 							type="number"
-							placeholder={`New value for ${adjustedIngredient.name}`}
+							placeholder={`New value for ${ingredientToAdjust.name}`}
 							value={newAmount}
 							onChange={(e) => setNewAmount(e.target.value)}
 						/>

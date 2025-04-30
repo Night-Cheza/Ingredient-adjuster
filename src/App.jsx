@@ -2,14 +2,16 @@ import { useState } from "react";
 import RecipeForm from "./components/RecipeForm";
 import IngredientList from "./components/IngredientList";
 import RecalculatedIngredients from "./components/RecalculatedIngredients";
-import { recalculateRecipe } from "./utils/recalculateRecipeUtil";
+import {recalculateRecipe} from "./utils/recalculateRecipeUtil";
+import {convertMeasurements} from "./utils/unitConversionUtil";
 
 function App() {
 	const [ingredients, setIngredients] = useState([]);
-	const [recalculated, setRecalculated] = useState([]);
-	const [ isAdjusting, setIsAdjusting ] = useState( false );
-	const [ isRecalculated, setIsRecalculated ] = useState( false );
+	const [ recalculated, setRecalculated ] = useState( [] );
+	const [ isDisplaying, setIsDisplaying ] = useState( {adjusting: false, recalculated: false} );
 	const [ isDuplicate, setDublicate ] = useState( false );
+	const [ isConverted, setIsConverted ] = useState( false );
+	const [ convertedRecipe, setConvertedRecipe ] = useState( [] );
 
 	const addIngredient = ( ingredient ) => {
 		// Check for Duplicates
@@ -25,19 +27,27 @@ function App() {
 	const handleRecalculation = (selectedIngredient, newAmount) => {
 		const updatedRecipe = recalculateRecipe( ingredients, selectedIngredient, newAmount );
 		setRecalculated(updatedRecipe);
-		setIsRecalculated(true); // Hide adjustment mode after recalculating
+		setIsDisplaying({...isDisplaying, recalculated: true}); // Hide adjustment mode after recalculating
 	};
+
+	const handleConvertRecipe = () => {
+		recalculated.forEach( ( {name, amount, unit} ) => {
+			const converted = convertMeasurements( name, amount, unit );
+			setConvertedRecipe(prev =>  [...prev, converted] )
+	} )
+		setIsConverted( true );
+	}
 
 	const resetRecipe = () => {
 		setIngredients([]);
-		setRecalculated([]);
-		setIsAdjusting(false);
-		setIsRecalculated(false);
+		setRecalculated( [] );
+		setConvertedRecipe( [] );
+		setIsDisplaying( {adjusting: false, recalculated: false} );
+		setIsConverted( false );
 	};
 
 	const handleCancel = () => {
-		setIsRecalculated(false);
-		setIsAdjusting(false)
+		setIsDisplaying({adjusting: false, recalculated: false});
 	}
 
 	return (
@@ -45,20 +55,20 @@ function App() {
 			<h1>Recipe Ingredient Recalculator</h1>
 
 			{/* Hide form if adjusting an ingredient */}
-			{!isRecalculated && !isAdjusting && <RecipeForm onAddIngredient={addIngredient} duplicate={isDuplicate}/>}
+			{!isDisplaying.recalculated && !isDisplaying.adjusting && <RecipeForm onAddIngredient={addIngredient} duplicate={isDuplicate}/>}
 
-			{!isRecalculated && (
+			{!isDisplaying.recalculated && (
 				<IngredientList
 					ingredients={ingredients}
-					isAdjusting={isAdjusting}
-					onAdjust={() => setIsAdjusting( true )}
+					isAdjusting={isDisplaying.adjusting}
+					onAdjust={() => setIsDisplaying({...isDisplaying, adjusting: true})}
 					onRecalculate={handleRecalculation}
-					isRecalculated={isRecalculated}
+					isRecalculated={isDisplaying.recalculated}
 					onCancel={handleCancel}
 				/>
 			)}
 
-			{isRecalculated && <RecalculatedIngredients recalculated={recalculated} onReset={resetRecipe}/>}
+			{isDisplaying.recalculated && <RecalculatedIngredients recalculated={recalculated} onReset={resetRecipe} convertedRecipe={convertedRecipe} onConvert={handleConvertRecipe} isConverted={isConverted}/>}
 		</div>
 	);
 }
