@@ -4,7 +4,7 @@ import { fetchCategoryList, fetchIngredientByCategory, fetchUnitList } from "../
 import "./RecipeForm.css"
 
 const RecipeForm = ({ onAddIngredient, duplicate }) => {
-	const [ ingredient, setIngredient ] = useState( {category: "", name: "", amount: "", unit: ""} );
+	const [ ingredient, setIngredient ] = useState( {} );
 	const [ ingredientList, setIngredientList ] = useState( [] );
 	const [ categoryList, setCategoryList ] = useState( [] );
 	const [ unitList, setUnitList ] = useState( [] );
@@ -34,7 +34,6 @@ const RecipeForm = ({ onAddIngredient, duplicate }) => {
 		if (!ingredient.category) {
 			newErrors.category = true;
 			newErrors.name = true;
-			console.log(ingredient.name.length)
 			missingFields.push( true );
 		}
 
@@ -56,7 +55,6 @@ const RecipeForm = ({ onAddIngredient, duplicate }) => {
 		}
 
 		setErrors(newErrors );
-		console.log( errors );
 
 		if( missingFields.length > 0 ) {
 			return;
@@ -76,7 +74,7 @@ const RecipeForm = ({ onAddIngredient, duplicate }) => {
 		<div>
 			<h2>Add Ingredients</h2>
 			<form onSubmit={handleSubmit}>
-				<div className="error-message">{duplicate ? "The ingredient is already on the list" : (errors.category || errors.igredient || errors.amount || errors.unit || errors.general) ? "Please fill missing fields" : ""}</div>
+				<div className="error-message">{duplicate ? "The ingredient is already on the list" : (errors.category || errors.igredient || errors.amount || errors.unit || errors.general) ? "Please provide correct information" : ""}</div>
 				<select
 					className={errors.category ? "input-error" : ""}
 					value={ingredient.category}
