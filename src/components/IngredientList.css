@@ -1,9 +1,14 @@
 .newValue {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .btn {
-		margin-left: 0.5rem;
+	margin-left: 0.5rem;
+}
+
+.adjust {
+	height: 1.9rem;
+	float: right;
 }

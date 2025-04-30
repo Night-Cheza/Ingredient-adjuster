@@ -33,7 +33,7 @@ const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isR
 					<li key={index}>
 						{ingredient.name}: {ingredient.amount} {ingredient.unit}
 						{ingredients.length > 1 && !ingredientToAdjust && !isRecalculated && (
-							<button className="btn" onClick={() => handleAdjust(ingredient)}>Adjust</button>
+							<button className="adjust" onClick={() => handleAdjust(ingredient)}>Adjust</button>
 						)}
 					</li>
 				))}
