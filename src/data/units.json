@@ -1,27 +1,27 @@
 [
 	{
 		"unit": "Cup (Imperial)",
-		"abrr": "cup",
+		"abrr": "cup (imp)",
 		"volume": "284"
 	},
 	{
 		"unit": "Cup (Metric)",
-		"abrr": "cup",
+		"abrr": "cup (metr)",
 		"volume": "250"
 	},
 	{
 		"unit": "Cup (US)",
-		"abrr": "cup",
+		"abrr": "cup (us)",
 		"volume": "237"
 	},
 	{
 		"unit": "Fluid ounce (Imperial)",
-		"abrr": "oz",
+		"abrr": "oz (imp)",
 		"volume": "28.41"
 	},
 	{
 		"unit": "Fluid ounce (US)",
-		"abrr": "oz",
+		"abrr": "oz (us)",
 		"volume": "29.57"
 	},
 	{
@@ -61,12 +61,12 @@
 	},
 	{
 		"unit": "Pint (Imperial)",
-		"abrr": "pt",
+		"abrr": "pt (imp)",
 		"volume": "568.26"
 	},
 	{
 		"unit": "Pint (US)",
-		"abrr": "pt",
+		"abrr": "pt (us)",
 		"volume": "473.18"
 	},
 	{
@@ -76,12 +76,12 @@
 	},
 	{
 		"unit": "Quart (Imperial)",
-		"abrr": "qt",
+		"abrr": "qt (imp)",
 		"volume": "1136.52"
 	},
 	{
 		"unit": "Quart (US)",
-		"abrr": "qt",
+		"abrr": "qt (us)",
 		"volume": "946.35"
 	},
 	{
@@ -91,7 +91,7 @@
 	},
 	{
 		"unit": "Tablespoon (Imperial)",
-		"abrr": "tbsp",
+		"abrr": "tbsp (imp)",
 		"volume": "17.76"
 	},
 	{
@@ -101,7 +101,7 @@
 	},
 	{
 		"unit": "Teaspoon (Imperial)",
-		"abrr": "tsp",
+		"abrr": "tsp(imp)",
 		"volume": "5.92"
 	}
 ]

@@ -15,3 +15,8 @@ export const fetchUnitList = () => {
 	const unit = unitData.map(item => item.unit)
 	return unit;
 }
+
+export const fetchAbbrList = () => {
+	const abbr = unitData.map(item => item.abbr)
+	return abbr;
+}
