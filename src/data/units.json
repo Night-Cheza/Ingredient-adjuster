@@ -1,107 +1,107 @@
 [
 	{
 		"unit": "Cup (Imperial)",
-		"abrr": "cup (imp)",
+		"abbr": "cup (imp)",
 		"volume": "284"
 	},
 	{
 		"unit": "Cup (Metric)",
-		"abrr": "cup (metr)",
+		"abbr": "cup (m)",
 		"volume": "250"
 	},
 	{
 		"unit": "Cup (US)",
-		"abrr": "cup (us)",
+		"abbr": "cup (us)",
 		"volume": "237"
 	},
 	{
 		"unit": "Fluid ounce (Imperial)",
-		"abrr": "oz (imp)",
+		"abbr": "oz (imp)",
 		"volume": "28.41"
 	},
 	{
 		"unit": "Fluid ounce (US)",
-		"abrr": "oz (us)",
+		"abbr": "oz (us)",
 		"volume": "29.57"
 	},
 	{
 		"unit": "Gallon",
-		"abrr": "gal",
+		"abbr": "gal",
 		"volume": "3785.41"
 	},
 	{
 		"unit": "Gram",
-		"abrr": "g",
+		"abbr": "g",
 		"weight": "1"
 	},
 	{
 		"unit": "Kilogram",
-		"abrr": "kg",
+		"abbr": "kg",
 		"weight": "1000"
 	},
 	{
 		"unit": "Liter",
-		"abrr": "l",
+		"abbr": "l",
 		"volume": "1000"
 	},
 	{
 		"unit": "Milliliter",
-		"abrr": "ml",
+		"abbr": "ml",
 		"volume": "1"
 	},
 	{
 		"unit": "Ounce",
-		"abrr": "oz",
+		"abbr": "oz",
 		"weight": "28.35"
 	},
 		{
 		"unit": "Piece",
-		"abrr": "piece",
+		"abbr": "piece",
 		"volume": ""
 	},
 	{
 		"unit": "Pint (Imperial)",
-		"abrr": "pt (imp)",
+		"abbr": "pt (imp)",
 		"volume": "568.26"
 	},
 	{
 		"unit": "Pint (US)",
-		"abrr": "pt (us)",
+		"abbr": "pt (us)",
 		"volume": "473.18"
 	},
 	{
 		"unit": "Pound",
-		"abrr": "lb",
+		"abbr": "lb",
 		"weight": "453.59"
 	},
 	{
 		"unit": "Quart (Imperial)",
-		"abrr": "qt (imp)",
+		"abbr": "qt (imp)",
 		"volume": "1136.52"
 	},
 	{
 		"unit": "Quart (US)",
-		"abrr": "qt (us)",
+		"abbr": "qt (us)",
 		"volume": "946.35"
 	},
 	{
 		"unit": "Tablespoon",
-		"abrr": "tbsp",
+		"abbr": "tbsp",
 		"volume": "15"
 	},
 	{
 		"unit": "Tablespoon (Imperial)",
-		"abrr": "tbsp (imp)",
+		"abbr": "tbsp (imp)",
 		"volume": "17.76"
 	},
 	{
 		"unit": "Teaspoon",
-		"abrr": "tsp",
+		"abbr": "tsp",
 		"volume": "5"
 	},
 	{
 		"unit": "Teaspoon (Imperial)",
-		"abrr": "tsp(imp)",
+		"abbr": "tsp(imp)",
 		"volume": "5.92"
 	}
 ]
