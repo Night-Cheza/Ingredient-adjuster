@@ -433,7 +433,7 @@
 		"ingredients": [
 			{"name": "Alcohol (ex: brandy, rum, wine)", "type": "liquid"},
 			{"name": "Brewed coffee", "type": "liquid"},
-			{"name": "Fruit juices (ex: apple, cranberry, orange)", "type": "liquid"},
+			{"name": "Fruit juice (ex: apple, cranberry, orange)", "type": "liquid"},
 			{"name": "Tea (ex: Earl Gray, green tea, chai)", "type": "liquid"},
 			{"name": "Water", "type": "liquid"}
 		]
@@ -692,7 +692,7 @@
 				"g_per_tablespoon": 12.17
 			},
 			{
-				"name": "Confectioners (icing, powdered) sugar",
+				"name": "Confectioners sugar (icing, powdered sugar) ",
 				"type": "granulated",
 				"g_per_cup_metric": 126.8,
 				"g_per_tablespoon": 7.61
