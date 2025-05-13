@@ -7,14 +7,14 @@ const RecipeForm = ({ onAddIngredient, duplicate }) => {
 	const [ ingredient, setIngredient ] = useState( {} );
 	const [ ingredientList, setIngredientList ] = useState( [] );
 	const [ categoryList, setCategoryList ] = useState( [] );
-	const [ unitList, setUnitList ] = useState( [] );
+	const [ unitList, setUnitList ] = useState( {units:[], abbrs: []} );
 	const [ errors, setErrors ] = useState( {category: false, name: false, amount: false, unit: false, general: false} );
 
 	useEffect(() => {
 		const loadedCategory = fetchCategoryList();
-		const loadedUnits = fetchUnitList();
+		const {loadedUnits, loadedAbbrs} = fetchUnitList();
 		setCategoryList( loadedCategory );
-		setUnitList( loadedUnits );
+		setUnitList( {units: loadedUnits, abbrs: loadedAbbrs} );
 }, []);
 
 	const handleCategoryChange = ( e ) => {
@@ -60,11 +60,15 @@ const RecipeForm = ({ onAddIngredient, duplicate }) => {
 			return;
 		}
 
+		const index = unitList.units.indexOf(ingredient.unit);
+		const abbr = unitList.abbrs[index];
+
 		onAddIngredient( {
 			...ingredient,
 			name: ingredient.name,
 			amount: ingredient.amount,
 			unit: ingredient.unit,
+			abbr: abbr
 		} );
 		setIngredient( {category: "", name: "", amount: "", unit: ""} );
 		setIngredientList( [] );
@@ -111,7 +115,7 @@ const RecipeForm = ({ onAddIngredient, duplicate }) => {
 					value={ingredient.unit}
 					onChange={( e ) => setIngredient( {...ingredient, unit: e.target.value} )}>
 					<option value="">Select measurement</option>
-					{unitList.map((unit, index) => (
+					{unitList.units.map((unit, index) => (
 						<option key={index} value={unit}>{unit}</option>
 					))}
 				</select>
