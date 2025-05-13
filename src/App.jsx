@@ -24,8 +24,9 @@ function App() {
 		setDublicate( false );
 	};
 
-	const handleDeleteIngredient = ( index ) => {
-		setIngredients(prev => prev.filter((_, i) => i !== index));
+	//Delete ingredient by index as names are unique
+	const handleDeleteIngredient = ( ingIndex ) => {
+		setIngredients(prev => prev.filter((_, i) => i !== ingIndex));
 	}
 
 	const handleRecalculation = (selectedIngredient, newAmount) => {
