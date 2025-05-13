@@ -2,7 +2,8 @@ import {useState} from "react";
 
 import "./IngredientList.css"
 
-const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isRecalculated, onCancel }) => {
+const IngredientList = ( {ingredients, onDelete, onAdjust, isAdjusting, onRecalculate, isRecalculated, onCancel} ) => {
+	// const [ingredientToDelete, setIngredientToDelete] = useState(null);
 	const [ingredientToAdjust, setingredientToAdjust] = useState(null);
 	const [newAmount, setNewAmount] = useState("");
 
@@ -31,8 +32,8 @@ const IngredientList = ({ ingredients, onAdjust, isAdjusting, onRecalculate, isR
 			<ul className="list">
 				{ingredients.map((ingredient, index) => (
 					<li key={index}>
-						{ingredient.name}: {ingredient.amount} {ingredient.unit}
-						<button className="adjust">Delete</button>
+						{ingredient.name}: {ingredient.amount} {ingredient.abbr}
+						<button className="adjust" onClick={() => onDelete(index)}>Delete</button>
 						{ingredients.length > 1 && !ingredientToAdjust && !isRecalculated && (
 							<button className="adjust" onClick={() => handleAdjust( ingredient )}>Adjust</button>
 						)}

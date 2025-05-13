@@ -24,6 +24,10 @@ function App() {
 		setDublicate( false );
 	};
 
+	const handleDeleteIngredient = ( index ) => {
+		setIngredients(prev => prev.filter((_, i) => i !== index));
+	}
+
 	const handleRecalculation = (selectedIngredient, newAmount) => {
 		const updatedRecipe = recalculateRecipe( ingredients, selectedIngredient, newAmount );
 		setRecalculated(updatedRecipe);
@@ -60,6 +64,7 @@ function App() {
 			{!isDisplaying.recalculated && (
 				<IngredientList
 					ingredients={ingredients}
+					onDelete={handleDeleteIngredient}
 					isAdjusting={isDisplaying.adjusting}
 					onAdjust={() => setIsDisplaying({...isDisplaying, adjusting: true})}
 					onRecalculate={handleRecalculation}
